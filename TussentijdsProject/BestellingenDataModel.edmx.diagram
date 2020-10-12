@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4099089d534046faa8da07426e1fe2b8" Name="Diagram1">
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Bestelling" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.BestellingProduct" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Categorie" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Gebruiker" Width="1.5" PointX="2.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.InLoggen" Width="1.5" PointX="5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Klant" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Leverancier" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Personeelslid" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Product" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_Bestelling_Klant" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_Bestelling_Leverancier" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_Bestelling_Personeelslid" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_BestellingProduct_Bestelling" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_BestellingProduct_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_Product_Categorie" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_InLoggen_Gebruiker" ManuallyRouted="false" />
+        <AssociationConnector Association="BestellingenDatabaseModel.FK_Product_Leverancier" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
