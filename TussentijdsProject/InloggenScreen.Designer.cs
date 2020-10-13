@@ -28,12 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnInloggen = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.epUserName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epWachtwoord = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epUserName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epWachtwoord)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -78,6 +83,7 @@
             this.btnInloggen.TabIndex = 5;
             this.btnInloggen.Text = "Inloggen";
             this.btnInloggen.UseVisualStyleBackColor = true;
+            this.btnInloggen.Click += new System.EventHandler(this.btnInloggen_Click);
             // 
             // btnCancel
             // 
@@ -87,6 +93,14 @@
             this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // epUserName
+            // 
+            this.epUserName.ContainerControl = this;
+            // 
+            // epWachtwoord
+            // 
+            this.epWachtwoord.ContainerControl = this;
             // 
             // InloggenScreen
             // 
@@ -101,7 +115,8 @@
             this.Controls.Add(this.label1);
             this.Name = "InloggenScreen";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.InloggenScreen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epUserName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epWachtwoord)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -115,6 +130,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnInloggen;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ErrorProvider epUserName;
+        private System.Windows.Forms.ErrorProvider epWachtwoord;
     }
 }
 

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnBewerken = new System.Windows.Forms.Button();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,6 +39,12 @@
             this.lbUsername = new System.Windows.Forms.ListBox();
             this.cbGebruiker = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.epGebruiker = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epUserName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epWachtwoord = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epGebruiker)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epUserName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epWachtwoord)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBewerken
@@ -131,6 +138,18 @@
             this.label2.TabIndex = 16;
             this.label2.Text = "Gubruiker";
             // 
+            // epGebruiker
+            // 
+            this.epGebruiker.ContainerControl = this;
+            // 
+            // epUserName
+            // 
+            this.epUserName.ContainerControl = this;
+            // 
+            // epWachtwoord
+            // 
+            this.epWachtwoord.ContainerControl = this;
+            // 
             // ManageInloggen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -149,6 +168,9 @@
             this.Name = "ManageInloggen";
             this.Text = "ManageInloggen";
             this.Load += new System.EventHandler(this.ManageInloggen_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epGebruiker)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epUserName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epWachtwoord)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +188,8 @@
         private System.Windows.Forms.ListBox lbUsername;
         private System.Windows.Forms.ComboBox cbGebruiker;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ErrorProvider epGebruiker;
+        private System.Windows.Forms.ErrorProvider epUserName;
+        private System.Windows.Forms.ErrorProvider epWachtwoord;
     }
 }

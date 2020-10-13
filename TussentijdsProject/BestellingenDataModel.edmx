@@ -73,7 +73,7 @@
           <Property Name="Emailadres" Type="nvarchar" MaxLength="50" />
           <Property Name="Straatnaam" Type="nvarchar" MaxLength="50" />
           <Property Name="Huisnummer" Type="nchar" MaxLength="10" />
-          <Property Name="Bus" Type="int" />
+          <Property Name="Bus" Type="nchar" MaxLength="10" />
           <Property Name="Postcode" Type="int" />
           <Property Name="Gemeente" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -319,7 +319,7 @@
           <Property Name="Emailadres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Straatnaam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Huisnummer" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Bus" Type="Int32" />
+          <Property Name="Bus" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Postcode" Type="Int32" />
           <Property Name="Gemeente" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Bestellings" Relationship="Self.FK_Bestelling_Leverancier" FromRole="Leverancier" ToRole="Bestelling" />

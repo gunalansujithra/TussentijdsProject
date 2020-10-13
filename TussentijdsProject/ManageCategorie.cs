@@ -19,34 +19,48 @@ namespace TussentijdsProject
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+            DisplayErrorMessage();
+
+            if (txtCategorieNaam.Text.Trim().Length > 0)
             {
-                ctx.Categories.Add(new Categorie() { CategorieNaam = txtCategorieNaam.Text });
-                ctx.SaveChanges();
+                string categorie = txtCategorieNaam.Text;
+                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                {
+                    ctx.Categories.Add(new Categorie() { CategorieNaam = txtCategorieNaam.Text });
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show(categorie + " is succesvol toegevoegd");
+                txtCategorieNaam.Clear();
+                DisplayCategorieNaam();
             }
-            txtCategorieNaam.Clear();
-            DisplayCategorieNaam();
         }
 
         private void btnBewerken_Click(object sender, EventArgs e)
         {
-            using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-            {
-                ctx.Categories.Where(x => x.CategorieID == (int)lbCategorie.SelectedValue).FirstOrDefault().CategorieNaam = txtCategorieNaam.Text.Trim();
-                ctx.SaveChanges();
-            }
+            DisplayErrorMessage();
 
-            DisplayCategorieNaam();
+            if (txtCategorieNaam.Text.Trim().Length > 0)
+            {
+                string categorie = txtCategorieNaam.Text;
+                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                {
+                    ctx.Categories.Where(x => x.CategorieID == (int)lbCategorie.SelectedValue).FirstOrDefault().CategorieNaam = txtCategorieNaam.Text.Trim();
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show(categorie + " is succesvol bijgewerkt");
+                DisplayCategorieNaam();
+            }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
+            string categorie = lbCategorie.Text;
             using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
             {
                 ctx.Categories.RemoveRange(ctx.Categories.Where(x => x.CategorieID == (int)lbCategorie.SelectedValue));
                 ctx.SaveChanges();
             }
-
+            MessageBox.Show(categorie + " is succesvol verwijderd");
             DisplayCategorieNaam();
         }
 
@@ -68,6 +82,25 @@ namespace TussentijdsProject
                 lbCategorie.DisplayMember = "Naam";
                 lbCategorie.ValueMember = "Id";
                 lbCategorie.DataSource = categorieNaamLijst;
+            }
+        }
+
+        public void DisplayErrorMessage()
+        {
+            string errorMessage = "";
+            if (txtCategorieNaam.Text.Trim().Length == 0)
+            {
+                epNaam.SetError(txtCategorieNaam, "Categorie naam is niet ingevuld");
+                errorMessage += "\r\n" + "Categorie naam is niet ingevuld";
+            }
+            else
+            {
+                epNaam.Clear();
+            }
+
+            if (errorMessage.Trim().Length > 0)
+            {
+                MessageBox.Show(errorMessage);
             }
         }
     }

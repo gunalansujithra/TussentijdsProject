@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label2 = new System.Windows.Forms.Label();
             this.lbKlant = new System.Windows.Forms.ListBox();
             this.btnVerwijderen = new System.Windows.Forms.Button();
@@ -52,6 +53,26 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtOpmerking = new System.Windows.Forms.TextBox();
             this.mtbTelefoonnummer = new System.Windows.Forms.MaskedTextBox();
+            this.epVoornaam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epAchternaam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epStraatnaam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epHuisnummer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epBus = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epPostcode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epGemeente = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epTelefoon = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epOpmerking = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epVoornaam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAchternaam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epStraatnaam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epHuisnummer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epBus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPostcode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epGemeente)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epTelefoon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOpmerking)).BeginInit();
             this.SuspendLayout();
             // 
             // label2
@@ -264,6 +285,46 @@
             this.mtbTelefoonnummer.Size = new System.Drawing.Size(220, 22);
             this.mtbTelefoonnummer.TabIndex = 42;
             // 
+            // epVoornaam
+            // 
+            this.epVoornaam.ContainerControl = this;
+            // 
+            // epAchternaam
+            // 
+            this.epAchternaam.ContainerControl = this;
+            // 
+            // epStraatnaam
+            // 
+            this.epStraatnaam.ContainerControl = this;
+            // 
+            // epHuisnummer
+            // 
+            this.epHuisnummer.ContainerControl = this;
+            // 
+            // epBus
+            // 
+            this.epBus.ContainerControl = this;
+            // 
+            // epPostcode
+            // 
+            this.epPostcode.ContainerControl = this;
+            // 
+            // epGemeente
+            // 
+            this.epGemeente.ContainerControl = this;
+            // 
+            // epTelefoon
+            // 
+            this.epTelefoon.ContainerControl = this;
+            // 
+            // epEmail
+            // 
+            this.epEmail.ContainerControl = this;
+            // 
+            // epOpmerking
+            // 
+            this.epOpmerking.ContainerControl = this;
+            // 
             // ManageKlant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -296,6 +357,16 @@
             this.Name = "ManageKlant";
             this.Text = "AddKlant";
             this.Load += new System.EventHandler(this.ManageKlant_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epVoornaam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAchternaam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epStraatnaam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epHuisnummer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epBus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPostcode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epGemeente)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epTelefoon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOpmerking)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,5 +398,15 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtOpmerking;
         private System.Windows.Forms.MaskedTextBox mtbTelefoonnummer;
+        private System.Windows.Forms.ErrorProvider epVoornaam;
+        private System.Windows.Forms.ErrorProvider epAchternaam;
+        private System.Windows.Forms.ErrorProvider epStraatnaam;
+        private System.Windows.Forms.ErrorProvider epHuisnummer;
+        private System.Windows.Forms.ErrorProvider epBus;
+        private System.Windows.Forms.ErrorProvider epPostcode;
+        private System.Windows.Forms.ErrorProvider epGemeente;
+        private System.Windows.Forms.ErrorProvider epTelefoon;
+        private System.Windows.Forms.ErrorProvider epEmail;
+        private System.Windows.Forms.ErrorProvider epOpmerking;
     }
 }

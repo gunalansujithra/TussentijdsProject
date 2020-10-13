@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbPersoneelslid = new System.Windows.Forms.ListBox();
             this.btnVerwijderen = new System.Windows.Forms.Button();
             this.btnBewerken = new System.Windows.Forms.Button();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.epNaam = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epNaam)).BeginInit();
             this.SuspendLayout();
             // 
             // lbPersoneelslid
@@ -92,6 +95,10 @@
             this.label1.TabIndex = 17;
             this.label1.Text = "Voornaam";
             // 
+            // epNaam
+            // 
+            this.epNaam.ContainerControl = this;
+            // 
             // ManagePersoneelslid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -106,6 +113,7 @@
             this.Name = "ManagePersoneelslid";
             this.Text = "ManagePersoneelslid";
             this.Load += new System.EventHandler(this.ManagePersoneelslid_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epNaam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,5 +126,6 @@
         private System.Windows.Forms.Button btnToevoegen;
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider epNaam;
     }
 }

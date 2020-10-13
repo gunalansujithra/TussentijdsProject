@@ -27,7 +27,7 @@ namespace TussentijdsProject
         public string Emailadres { get; set; }
         public string Straatnaam { get; set; }
         public string Huisnummer { get; set; }
-        public Nullable<int> Bus { get; set; }
+        public string Bus { get; set; }
         public Nullable<int> Postcode { get; set; }
         public string Gemeente { get; set; }
     

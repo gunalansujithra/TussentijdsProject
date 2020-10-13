@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbCategorie = new System.Windows.Forms.ListBox();
             this.btnVerwijderen = new System.Windows.Forms.Button();
             this.btnBewerken = new System.Windows.Forms.Button();
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.txtCategorieNaam = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.epNaam = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epNaam)).BeginInit();
             this.SuspendLayout();
             // 
             // lbCategorie
@@ -92,6 +95,10 @@
             this.label1.TabIndex = 25;
             this.label1.Text = "Categorie Naam";
             // 
+            // epNaam
+            // 
+            this.epNaam.ContainerControl = this;
+            // 
             // ManageCategorie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -106,6 +113,7 @@
             this.Name = "ManageCategorie";
             this.Text = "ManageCategorie";
             this.Load += new System.EventHandler(this.ManageCategorie_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epNaam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,5 +127,6 @@
         private System.Windows.Forms.Button btnToevoegen;
         private System.Windows.Forms.TextBox txtCategorieNaam;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider epNaam;
     }
 }

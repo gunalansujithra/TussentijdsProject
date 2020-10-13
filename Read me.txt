@@ -1,0 +1,17 @@
+12/10/2020
+-----------
+1.Database design
+2.Login Screen
+3.Add new user screen (Toevoegen, Verwijderen, Bewerken)
+4.Manage categorie screen (Toevoegen, Verwijderen, Bewerken)
+5.Manage klant screen (Toevoegen, Verwijderen, Bewerken)
+6.Manage Personeelslid screen (Toevoegen, Verwijderen, Bewerken)
+
+13/10/2020
+-----------
+1.Manage Levancier (Toevoegen, Verwijderen, Bewerken, Error handling)
+2.Login Screen (Error handling)
+3.Add new user screen (Error handling)
+4.Manage categorie screen (Error handling)
+5.Manage klant screen (Error handling)
+6.Manage Personeelslid screen (Error handling)

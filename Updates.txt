@@ -1,8 +1,0 @@
-12/10/2020
------------
-1.Database design
-2.Login Screen
-3.Add new user screen (Toevoegen, Verwijderen, Bewerken)
-4.Manage categorie screen (Toevoegen, Verwijderen, Bewerken)
-5.Manage klant screen (Toevoegen, Verwijderen, Bewerken)
-6.Manage Personeelslid screen (Toevoegen, Verwijderen, Bewerken)

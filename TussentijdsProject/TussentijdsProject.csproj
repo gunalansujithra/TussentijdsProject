@@ -55,18 +55,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ManageCategorie.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManageCategorie.Designer.cs">
-      <DependentUpon>ManageCategorie.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ManageKlant.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ManageKlant.Designer.cs">
-      <DependentUpon>ManageKlant.cs</DependentUpon>
-    </Compile>
     <Compile Include="Bestelling.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
@@ -91,12 +79,6 @@
     <Compile Include="Categorie.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="InloggenScreen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="InloggenScreen.Designer.cs">
-      <DependentUpon>InloggenScreen.cs</DependentUpon>
-    </Compile>
     <Compile Include="Gebruiker.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
@@ -108,6 +90,24 @@
     </Compile>
     <Compile Include="Leverancier.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ManageCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageCategorie.Designer.cs">
+      <DependentUpon>ManageCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageKlant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageKlant.Designer.cs">
+      <DependentUpon>ManageKlant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InloggenScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InloggenScreen.Designer.cs">
+      <DependentUpon>InloggenScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageInloggen.cs">
       <SubType>Form</SubType>
@@ -147,6 +147,9 @@
     <EmbeddedResource Include="ManageKlant.resx">
       <DependentUpon>ManageKlant.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageLeverancier.resx">
+      <DependentUpon>ManageLeverancier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ManagePersoneelslid.resx">
       <DependentUpon>ManagePersoneelslid.cs</DependentUpon>
     </EmbeddedResource>
@@ -181,19 +184,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="BestellingenDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>BestellingenDataModel.Context.cs</LastGenOutput>
       <DependentUpon>BestellingenDataModel.edmx</DependentUpon>
+      <LastGenOutput>BestellingenDataModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="BestellingenDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>BestellingenDataModel.edmx</DependentUpon>
       <LastGenOutput>BestellingenDataModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
