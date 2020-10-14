@@ -30,79 +30,68 @@ namespace TussentijdsProject
                 cbGebruiker.DisplayMember = "Naam";
                 cbGebruiker.ValueMember = "Id";
                 cbGebruiker.DataSource = gebruikerLijst;
+
+                cbGebruiker.SelectedIndex = -1;
             }
-            
-            DisplayUsername();
-        }
 
-        private void btnToevoegen_Click(object sender, EventArgs e)
-        {
-            DisplayErrorMessage();
-
-            if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
+            if (InloggenScreen.IsNewUser == true)
             {
-                string gebruiker = txtUsername.Text;
-                string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                {
-                    ctx.InLoggens.Add(new InLoggen() { Username = txtUsername.Text, Wachtwoord = encrypWW, GebruikerId = (int)cbGebruiker.SelectedValue });
-                    ctx.SaveChanges();
-                }
-                MessageBox.Show(gebruiker + " is succesvol toegevoegd");
-                txtUsername.Clear();
-                txtPassword.Clear();
-                cbGebruiker.SelectedIndex = 0;
-                DisplayUsername();
+                lblGebruiker.Visible = true;
+                cbGebruiker.Visible = true;
+                lblWachtwoord.Text = "Wachtwoord";
+                txtUsername.Enabled = true;
+                btnToevoegen.Text = "Toevoegen";
             }
-        }
-
-        private void btnBewerken_Click(object sender, EventArgs e)
-        {
-            DisplayErrorMessage();
-
-            if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
+            else
             {
-                string gebruiker = txtUsername.Text;
-                string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                {
-                    ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue).FirstOrDefault().Username = txtUsername.Text.Trim();
-                    ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue).FirstOrDefault().Wachtwoord = encrypWW;
-                    ctx.SaveChanges();
-                }
-                MessageBox.Show(gebruiker + " is succesvol bijgewerkt");
-                DisplayUsername();
-                cbGebruiker.SelectedIndex = 0;
+                lblGebruiker.Visible = false;
+                cbGebruiker.Visible = false;
+                lblWachtwoord.Text = "Nieuw Wachtwoord";
+                txtUsername.Enabled = false;
+                txtUsername.Text = InloggenScreen.UserName;
+                btnToevoegen.Text = "Opslaan";
             }
         }
 
-        private void btnVerwijderen_Click(object sender, EventArgs e)
-        {
-            string gebruiker = lbUsername.Text;
-            using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-            {
-                ctx.InLoggens.RemoveRange(ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue));
-                ctx.SaveChanges();
-            }
-            MessageBox.Show(gebruiker + " is succesvol verwijderd");
-            DisplayUsername();
-        }
+        //private void btnToevoegen_Click(object sender, EventArgs e)
+        //{
+        //    DisplayErrorMessage();
 
-        public void DisplayUsername()
-        {
-            using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-            {
-                //code for Usernames
-                var usersLijst = ctx.InLoggens.Select(x => new
-                {
-                    Naam = x.Username,
-                    Id = x.InloggenId
-                }).ToList();
-                lbUsername.DisplayMember = "Naam";
-                lbUsername.ValueMember = "Id";
-                lbUsername.DataSource = usersLijst  ;
-            }
-        }
+        //    if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
+        //    {
+        //        string gebruiker = txtUsername.Text;
+        //        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
+        //        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+        //        {
+        //            ctx.InLoggens.Add(new InLoggen() { Username = txtUsername.Text, Wachtwoord = encrypWW, GebruikerId = (int)cbGebruiker.SelectedValue });
+        //            ctx.SaveChanges();
+        //        }
+        //        MessageBox.Show(gebruiker + " is succesvol toegevoegd");
+        //        txtUsername.Clear();
+        //        txtPassword.Clear();
+        //        cbGebruiker.SelectedIndex = 0;
+        //    }
+        //}
+
+        //private void btnBewerken_Click(object sender, EventArgs e)
+        //{
+        //    DisplayErrorMessage();
+
+        //    if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
+        //    {
+        //        string gebruiker = txtUsername.Text;
+        //        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
+        //        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+        //        {
+        //            ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue).FirstOrDefault().Username = txtUsername.Text.Trim();
+        //            ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue).FirstOrDefault().Wachtwoord = encrypWW;
+        //            ctx.SaveChanges();
+        //        }
+        //        MessageBox.Show(gebruiker + " is succesvol bijgewerkt");
+        //        DisplayUsername();
+        //        cbGebruiker.SelectedIndex = 0;
+        //    }
+        //}
 
         public static string EncryptWachtwoord(string input)
         {
@@ -118,9 +107,40 @@ namespace TussentijdsProject
             return password;
         }
 
+        public void DisplayPasswordErrorMessage()
+        {
+            string errorMessage = "";
+
+            if (txtPassword.Text.Trim().Length == 0)
+            {
+                epWachtwoord.SetError(txtPassword, "Wacthwoord naam is niet ingevuld");
+                errorMessage += "\r\n" + "Wacthwoord naam is niet ingevuld";
+            }
+            else
+            {
+                epWachtwoord.Clear();
+            }
+
+            if (errorMessage.Trim().Length > 0)
+            {
+                MessageBox.Show(errorMessage);
+            }
+        }
+
         public void DisplayErrorMessage()
         {
             string errorMessage = "";
+
+            if (cbGebruiker.SelectedIndex < 0)
+            {
+                epGebruiker.SetError(cbGebruiker, "Gebruiker is niet geselecteerd");
+                errorMessage += "\r\n" + "Gebruiker is niet geselecteerd";
+            }
+            else
+            {
+                epGebruiker.Clear();
+            }
+
             if (txtUsername.Text.Trim().Length == 0)
             {
                 epUserName.SetError(txtUsername, "Usernaam is niet ingevuld");
@@ -139,22 +159,133 @@ namespace TussentijdsProject
             else
             {
                 epWachtwoord.Clear();
-            }
-
-            if (cbGebruiker.SelectedIndex < 0)
-            {
-                epGebruiker.SetError(cbGebruiker, "Gebruiker is niet geselecteerd");
-                errorMessage += "\r\n" + "Gebruiker is niet geselecteerd";
-            }
-            else
-            {
-                epGebruiker.Clear();
-            }
+            }            
 
             if (errorMessage.Trim().Length > 0)
             {
                 MessageBox.Show(errorMessage);
             }
         }
+
+        private void btnAnnuleren_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void btnToevoegen_Click(object sender, EventArgs e)
+        {
+            if (InloggenScreen.IsNewUser == true)
+            {
+                DisplayErrorMessage();
+
+                if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
+                {
+                    string validErrorMsg = CheckPassword(txtPassword.Text.Trim());
+
+                    if (validErrorMsg.Length > 0)
+                    {
+                        MessageBox.Show(validErrorMsg);
+                    }
+                    else
+                    {
+                        string gebruiker = txtUsername.Text;
+                        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            var usersDetails = ctx.InLoggens.Where(x => x.Username == gebruiker && x.GebruikerId == (int)cbGebruiker.SelectedValue).FirstOrDefault();
+
+                            if (usersDetails != null && usersDetails.Username == gebruiker)
+                            {
+                                MessageBox.Show(gebruiker + " bestaat al. Kies een andere naam.");
+                                txtUsername.Clear();
+                                txtPassword.Clear();
+                            }
+                            else
+                            {
+                                ctx.InLoggens.Add(new InLoggen() { Username = txtUsername.Text, Wachtwoord = encrypWW, GebruikerId = (int)cbGebruiker.SelectedValue });
+                                ctx.SaveChanges();
+                                MessageBox.Show(gebruiker + " is succesvol toegevoegd");
+                                this.DialogResult = DialogResult.OK;
+                            }
+                        }                        
+                    }
+                }
+            }
+            else
+            {
+                DisplayPasswordErrorMessage();
+
+                if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0)
+                {
+                    string validErrorMsg = CheckPassword(txtPassword.Text.Trim());
+
+                    if (validErrorMsg.Length > 0)
+                    {
+                        MessageBox.Show(validErrorMsg);
+                    }
+                    else
+                    {
+                        string gebruiker = txtUsername.Text;
+                        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
+
+                        bool isUpdated = false;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            var usersDetails = ctx.InLoggens.Where(x => x.Username == gebruiker).FirstOrDefault();
+
+                            if (usersDetails != null && usersDetails.Username == gebruiker)
+                            {
+                                ctx.InLoggens.Where(x => x.InloggenId == usersDetails.InloggenId).FirstOrDefault().Wachtwoord = encrypWW;
+                                ctx.SaveChanges();
+
+                                MessageBox.Show("Nieuw wachtwoord is succesvol bijgewerkt");
+                                isUpdated = true;                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("Onjuist Username");                                
+                            }
+                        }
+                        if (isUpdated)
+                            this.DialogResult = DialogResult.OK;
+                        else
+                            this.DialogResult = DialogResult.Cancel;
+                    }
+                }
+            }
+        }
+
+        public string CheckPassword(string wachtwoord)
+        {
+            string errorMessage = "";
+
+            if (wachtwoord.Length < 8 || wachtwoord.Length > 20)
+            {
+                errorMessage += "Een lengte van 8-20 characters" + "\n";
+            }
+
+            if (!wachtwoord.Any(c => char.IsUpper(c)))
+            {
+                errorMessage += "Minstens 1 hoofdletter" + "\n";
+            }
+
+            if (!wachtwoord.Any(c => char.IsLower(c)))
+            {
+                errorMessage += "Minstens 1 kleine letter" + "\n";
+            }
+
+            if (!wachtwoord.Any(c => char.IsDigit(c)))
+            {
+                errorMessage += "Minstens 1 cijfer" + "\n";
+            }
+            
+            if (wachtwoord.IndexOfAny("!@#$%^&*?_~-£().,".ToCharArray()) == -1)
+            {
+                errorMessage += "Minstens 1 vreemd teken" + "\n";
+            }
+
+            return errorMessage;
+        }
+
     }
 }

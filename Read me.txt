@@ -15,3 +15,8 @@
 4.Manage categorie screen (Error handling)
 5.Manage klant screen (Error handling)
 6.Manage Personeelslid screen (Error handling)
+
+14/10/2020
+-----------
+1.Login screen redesign
+2.Menu design(WIP)

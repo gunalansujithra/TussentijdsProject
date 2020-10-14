@@ -18,6 +18,8 @@ namespace TussentijdsProject
             InitializeComponent();
         }
 
+        public static bool IsNewUser = false;
+        public static string UserName = "";
         private void btnInloggen_Click(object sender, EventArgs e)
         {
             DisplayErrorMessage();
@@ -29,7 +31,20 @@ namespace TussentijdsProject
                     //code for Usernames
                     string gebruiker = txtUsername.Text;
                     string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-                    var usersDetails = ctx.InLoggens.Where(x => x.Username == gebruiker && x.Wachtwoord == encrypWW).FirstOrDefault();
+                    var usersDetails = ctx.InLoggens.Where(x => x.Username == gebruiker).FirstOrDefault();
+
+                    if (usersDetails != null && usersDetails.Username == gebruiker && usersDetails.Wachtwoord == encrypWW)
+                    {
+                        HomePage homePage = new HomePage();
+                        this.Hide();
+                        homePage.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Onjuist Username / Wachtwoord is succesvol toegevoegd");
+                        txtUsername.Clear();
+                        txtPassword.Clear();
+                    }
                 }
             }
         }
@@ -74,6 +89,50 @@ namespace TussentijdsProject
             if (errorMessage.Trim().Length > 0)
             {
                 MessageBox.Show(errorMessage);
+            }
+        }       
+
+        private void cbWachtwoord_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbWachtwoord.Checked)
+            {
+                txtPassword.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                txtPassword.UseSystemPasswordChar = true;
+            }
+        }
+
+        private void InloggenScreen_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShutdown_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void lnkNewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            IsNewUser = true;
+            ManageInloggen manageInloggen = new ManageInloggen();
+            if (manageInloggen.ShowDialog() == DialogResult.OK)
+            {
+                txtUsername.Clear();
+                txtPassword.Clear();
+            }
+        }
+
+        private void lntWwVergeten_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            IsNewUser = false;
+            UserName = txtUsername.Text;
+            ManageInloggen manageInloggen = new ManageInloggen();
+            if (manageInloggen.ShowDialog() == DialogResult.OK)
+            {
+                txtPassword.Clear();
             }
         }
     }
