@@ -20,3 +20,9 @@
 -----------
 1.Login screen redesign
 2.Menu design(WIP)
+
+15/10/2020
+-----------
+1.Menu completed
+2.Products completed
+3.Redesigning Categorie, Klant, PersoneelsLid completed

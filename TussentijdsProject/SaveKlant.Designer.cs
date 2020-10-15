@@ -1,6 +1,6 @@
 ﻿namespace TussentijdsProject
 {
-    partial class ManageLeverancier
+    partial class SaveKlant
     {
         /// <summary>
         /// Required designer variable.
@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.mtbTelefoonnummer = new System.Windows.Forms.MaskedTextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtOpmerking = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtEmailadres = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -40,39 +43,69 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtHuisNummer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPersoon = new System.Windows.Forms.TextBox();
+            this.txtVoornaam = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnVerwijderen = new System.Windows.Forms.Button();
-            this.btnBewerken = new System.Windows.Forms.Button();
-            this.btnToevoegen = new System.Windows.Forms.Button();
+            this.btnAnnuleren = new System.Windows.Forms.Button();
+            this.btnOpslaan = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtStraatnaam = new System.Windows.Forms.TextBox();
-            this.epEmail = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epTelefoon = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epGemeente = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epPostcode = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epBus = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epHuisnummer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epOpmerking = new System.Windows.Forms.ErrorProvider(this.components);
             this.epStraatnaam = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epContactPersoon = new System.Windows.Forms.ErrorProvider(this.components);
-            this.cbLeverancier = new System.Windows.Forms.ComboBox();
+            this.txtStraatnaam = new System.Windows.Forms.TextBox();
+            this.epBus = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epTelefoon = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epAchternaam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epPostcode = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epHuisnummer = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epVoornaam = new System.Windows.Forms.ErrorProvider(this.components);
+            this.txtAchternaam = new System.Windows.Forms.TextBox();
+            this.epGemeente = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTelefoon = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.epEmail)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epTelefoon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epGemeente)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epPostcode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epBus)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epHuisnummer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epOpmerking)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epStraatnaam)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epContactPersoon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epBus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epTelefoon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAchternaam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPostcode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epHuisnummer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epVoornaam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epGemeente)).BeginInit();
             this.SuspendLayout();
+            // 
+            // mtbTelefoonnummer
+            // 
+            this.mtbTelefoonnummer.Location = new System.Drawing.Point(313, 404);
+            this.mtbTelefoonnummer.Margin = new System.Windows.Forms.Padding(4);
+            this.mtbTelefoonnummer.Mask = "+32 (000) 000-000";
+            this.mtbTelefoonnummer.Name = "mtbTelefoonnummer";
+            this.mtbTelefoonnummer.Size = new System.Drawing.Size(274, 28);
+            this.mtbTelefoonnummer.TabIndex = 66;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(104, 519);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(108, 25);
+            this.label10.TabIndex = 65;
+            this.label10.Text = "Opmerking";
+            // 
+            // txtOpmerking
+            // 
+            this.txtOpmerking.Location = new System.Drawing.Point(270, 519);
+            this.txtOpmerking.Margin = new System.Windows.Forms.Padding(4);
+            this.txtOpmerking.Name = "txtOpmerking";
+            this.txtOpmerking.Size = new System.Drawing.Size(318, 28);
+            this.txtOpmerking.TabIndex = 64;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(113, 279);
+            this.label9.Location = new System.Drawing.Point(104, 465);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(109, 25);
@@ -81,8 +114,7 @@
             // 
             // txtEmailadres
             // 
-            this.txtEmailadres.Enabled = false;
-            this.txtEmailadres.Location = new System.Drawing.Point(325, 279);
+            this.txtEmailadres.Location = new System.Drawing.Point(270, 465);
             this.txtEmailadres.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmailadres.Name = "txtEmailadres";
             this.txtEmailadres.Size = new System.Drawing.Size(318, 28);
@@ -92,7 +124,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(113, 215);
+            this.label8.Location = new System.Drawing.Point(104, 401);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(160, 25);
@@ -101,8 +133,7 @@
             // 
             // txtGemeente
             // 
-            this.txtGemeente.Enabled = false;
-            this.txtGemeente.Location = new System.Drawing.Point(560, 472);
+            this.txtGemeente.Location = new System.Drawing.Point(504, 340);
             this.txtGemeente.Margin = new System.Windows.Forms.Padding(4);
             this.txtGemeente.Name = "txtGemeente";
             this.txtGemeente.Size = new System.Drawing.Size(83, 28);
@@ -112,7 +143,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(113, 472);
+            this.label6.Location = new System.Drawing.Point(104, 340);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 25);
@@ -121,8 +152,7 @@
             // 
             // txtPostcode
             // 
-            this.txtPostcode.Enabled = false;
-            this.txtPostcode.Location = new System.Drawing.Point(325, 472);
+            this.txtPostcode.Location = new System.Drawing.Point(270, 340);
             this.txtPostcode.Margin = new System.Windows.Forms.Padding(4);
             this.txtPostcode.Name = "txtPostcode";
             this.txtPostcode.Size = new System.Drawing.Size(83, 28);
@@ -132,7 +162,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(423, 472);
+            this.label7.Location = new System.Drawing.Point(368, 340);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 25);
@@ -141,8 +171,7 @@
             // 
             // txtBus
             // 
-            this.txtBus.Enabled = false;
-            this.txtBus.Location = new System.Drawing.Point(560, 413);
+            this.txtBus.Location = new System.Drawing.Point(504, 281);
             this.txtBus.Margin = new System.Windows.Forms.Padding(4);
             this.txtBus.Name = "txtBus";
             this.txtBus.Size = new System.Drawing.Size(83, 28);
@@ -152,7 +181,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(113, 413);
+            this.label5.Location = new System.Drawing.Point(104, 281);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(122, 25);
@@ -161,8 +190,7 @@
             // 
             // txtHuisNummer
             // 
-            this.txtHuisNummer.Enabled = false;
-            this.txtHuisNummer.Location = new System.Drawing.Point(325, 413);
+            this.txtHuisNummer.Location = new System.Drawing.Point(270, 281);
             this.txtHuisNummer.Margin = new System.Windows.Forms.Padding(4);
             this.txtHuisNummer.Name = "txtHuisNummer";
             this.txtHuisNummer.Size = new System.Drawing.Size(83, 28);
@@ -172,168 +200,149 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(495, 413);
+            this.label4.Location = new System.Drawing.Point(440, 281);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(46, 25);
             this.label4.TabIndex = 53;
             this.label4.Text = "Bus";
             // 
-            // txtPersoon
+            // txtVoornaam
             // 
-            this.txtPersoon.Enabled = false;
-            this.txtPersoon.Location = new System.Drawing.Point(325, 150);
-            this.txtPersoon.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPersoon.Name = "txtPersoon";
-            this.txtPersoon.Size = new System.Drawing.Size(318, 28);
-            this.txtPersoon.TabIndex = 52;
+            this.txtVoornaam.Location = new System.Drawing.Point(270, 83);
+            this.txtVoornaam.Margin = new System.Windows.Forms.Padding(4);
+            this.txtVoornaam.Name = "txtVoornaam";
+            this.txtVoornaam.Size = new System.Drawing.Size(318, 28);
+            this.txtVoornaam.TabIndex = 52;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(113, 150);
+            this.label2.Location = new System.Drawing.Point(104, 83);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 25);
+            this.label2.Size = new System.Drawing.Size(103, 25);
             this.label2.TabIndex = 51;
-            this.label2.Text = "Contact persoon";
+            this.label2.Text = "Voornaam";
             // 
-            // btnVerwijderen
+            // btnAnnuleren
             // 
-            this.btnVerwijderen.BackColor = System.Drawing.Color.White;
-            this.btnVerwijderen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerwijderen.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerwijderen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnVerwijderen.Location = new System.Drawing.Point(537, 553);
-            this.btnVerwijderen.Margin = new System.Windows.Forms.Padding(4);
-            this.btnVerwijderen.Name = "btnVerwijderen";
-            this.btnVerwijderen.Size = new System.Drawing.Size(200, 66);
-            this.btnVerwijderen.TabIndex = 49;
-            this.btnVerwijderen.Text = "Verwijderen";
-            this.btnVerwijderen.UseVisualStyleBackColor = false;
-            this.btnVerwijderen.Click += new System.EventHandler(this.btnVerwijderen_Click);
+            this.btnAnnuleren.BackColor = System.Drawing.Color.White;
+            this.btnAnnuleren.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnnuleren.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnnuleren.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnAnnuleren.Location = new System.Drawing.Point(388, 593);
+            this.btnAnnuleren.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAnnuleren.Name = "btnAnnuleren";
+            this.btnAnnuleren.Size = new System.Drawing.Size(200, 66);
+            this.btnAnnuleren.TabIndex = 48;
+            this.btnAnnuleren.Text = "Annuleren";
+            this.btnAnnuleren.UseVisualStyleBackColor = false;
+            this.btnAnnuleren.Click += new System.EventHandler(this.btnAnnuleren_Click);
             // 
-            // btnBewerken
+            // btnOpslaan
             // 
-            this.btnBewerken.BackColor = System.Drawing.Color.White;
-            this.btnBewerken.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBewerken.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBewerken.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnBewerken.Location = new System.Drawing.Point(315, 553);
-            this.btnBewerken.Margin = new System.Windows.Forms.Padding(4);
-            this.btnBewerken.Name = "btnBewerken";
-            this.btnBewerken.Size = new System.Drawing.Size(200, 66);
-            this.btnBewerken.TabIndex = 48;
-            this.btnBewerken.Text = "Bewerken";
-            this.btnBewerken.UseVisualStyleBackColor = false;
-            this.btnBewerken.Click += new System.EventHandler(this.btnBewerken_Click);
-            // 
-            // btnToevoegen
-            // 
-            this.btnToevoegen.BackColor = System.Drawing.Color.White;
-            this.btnToevoegen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnToevoegen.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnToevoegen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnToevoegen.Location = new System.Drawing.Point(89, 553);
-            this.btnToevoegen.Margin = new System.Windows.Forms.Padding(4);
-            this.btnToevoegen.Name = "btnToevoegen";
-            this.btnToevoegen.Size = new System.Drawing.Size(200, 66);
-            this.btnToevoegen.TabIndex = 47;
-            this.btnToevoegen.Text = "Toevoegen";
-            this.btnToevoegen.UseVisualStyleBackColor = false;
-            this.btnToevoegen.Click += new System.EventHandler(this.btnToevoegen_Click);
+            this.btnOpslaan.BackColor = System.Drawing.Color.White;
+            this.btnOpslaan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOpslaan.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOpslaan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnOpslaan.Location = new System.Drawing.Point(164, 593);
+            this.btnOpslaan.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOpslaan.Name = "btnOpslaan";
+            this.btnOpslaan.Size = new System.Drawing.Size(200, 66);
+            this.btnOpslaan.TabIndex = 47;
+            this.btnOpslaan.Text = "Opslaan";
+            this.btnOpslaan.UseVisualStyleBackColor = false;
+            this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(113, 342);
+            this.label3.Location = new System.Drawing.Point(104, 211);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 25);
             this.label3.TabIndex = 46;
             this.label3.Text = "Straatnaam";
             // 
-            // txtStraatnaam
+            // epOpmerking
             // 
-            this.txtStraatnaam.Enabled = false;
-            this.txtStraatnaam.Location = new System.Drawing.Point(325, 342);
-            this.txtStraatnaam.Margin = new System.Windows.Forms.Padding(4);
-            this.txtStraatnaam.Name = "txtStraatnaam";
-            this.txtStraatnaam.Size = new System.Drawing.Size(318, 28);
-            this.txtStraatnaam.TabIndex = 45;
-            // 
-            // epEmail
-            // 
-            this.epEmail.ContainerControl = this;
-            // 
-            // epTelefoon
-            // 
-            this.epTelefoon.ContainerControl = this;
-            // 
-            // epGemeente
-            // 
-            this.epGemeente.ContainerControl = this;
-            // 
-            // epPostcode
-            // 
-            this.epPostcode.ContainerControl = this;
-            // 
-            // epBus
-            // 
-            this.epBus.ContainerControl = this;
-            // 
-            // epHuisnummer
-            // 
-            this.epHuisnummer.ContainerControl = this;
+            this.epOpmerking.ContainerControl = this;
             // 
             // epStraatnaam
             // 
             this.epStraatnaam.ContainerControl = this;
             // 
-            // epContactPersoon
+            // txtStraatnaam
             // 
-            this.epContactPersoon.ContainerControl = this;
+            this.txtStraatnaam.Location = new System.Drawing.Point(270, 211);
+            this.txtStraatnaam.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStraatnaam.Name = "txtStraatnaam";
+            this.txtStraatnaam.Size = new System.Drawing.Size(318, 28);
+            this.txtStraatnaam.TabIndex = 45;
             // 
-            // cbLeverancier
+            // epBus
             // 
-            this.cbLeverancier.FormattingEnabled = true;
-            this.cbLeverancier.Location = new System.Drawing.Point(325, 79);
-            this.cbLeverancier.Name = "cbLeverancier";
-            this.cbLeverancier.Size = new System.Drawing.Size(318, 29);
-            this.cbLeverancier.TabIndex = 67;
-            this.cbLeverancier.SelectedIndexChanged += new System.EventHandler(this.cbLeverancier_SelectedIndexChanged);
+            this.epBus.ContainerControl = this;
+            // 
+            // epTelefoon
+            // 
+            this.epTelefoon.ContainerControl = this;
+            // 
+            // epAchternaam
+            // 
+            this.epAchternaam.ContainerControl = this;
+            // 
+            // epPostcode
+            // 
+            this.epPostcode.ContainerControl = this;
+            // 
+            // epHuisnummer
+            // 
+            this.epHuisnummer.ContainerControl = this;
+            // 
+            // epEmail
+            // 
+            this.epEmail.ContainerControl = this;
+            // 
+            // epVoornaam
+            // 
+            this.epVoornaam.ContainerControl = this;
+            // 
+            // txtAchternaam
+            // 
+            this.txtAchternaam.Location = new System.Drawing.Point(270, 148);
+            this.txtAchternaam.Margin = new System.Windows.Forms.Padding(4);
+            this.txtAchternaam.Name = "txtAchternaam";
+            this.txtAchternaam.Size = new System.Drawing.Size(318, 28);
+            this.txtAchternaam.TabIndex = 44;
+            // 
+            // epGemeente
+            // 
+            this.epGemeente.ContainerControl = this;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(113, 79);
+            this.label1.Location = new System.Drawing.Point(104, 148);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(174, 25);
-            this.label1.TabIndex = 68;
-            this.label1.Text = "Select Leverancier";
+            this.label1.Size = new System.Drawing.Size(118, 25);
+            this.label1.TabIndex = 43;
+            this.label1.Text = "Achternaam";
             // 
-            // txtTelefoon
-            // 
-            this.txtTelefoon.Enabled = false;
-            this.txtTelefoon.Location = new System.Drawing.Point(325, 215);
-            this.txtTelefoon.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTelefoon.Name = "txtTelefoon";
-            this.txtTelefoon.Size = new System.Drawing.Size(318, 28);
-            this.txtTelefoon.TabIndex = 69;
-            // 
-            // ManageLeverancier
+            // SaveKlant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1000, 716);
-            this.Controls.Add(this.txtTelefoon);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbLeverancier);
+            this.ClientSize = new System.Drawing.Size(867, 709);
+            this.Controls.Add(this.mtbTelefoonnummer);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.txtOpmerking);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtEmailadres);
             this.Controls.Add(this.label8);
@@ -345,34 +354,41 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtHuisNummer);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtPersoon);
+            this.Controls.Add(this.txtVoornaam);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnVerwijderen);
-            this.Controls.Add(this.btnBewerken);
-            this.Controls.Add(this.btnToevoegen);
+            this.Controls.Add(this.btnAnnuleren);
+            this.Controls.Add(this.btnOpslaan);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtStraatnaam);
+            this.Controls.Add(this.txtAchternaam);
+            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "ManageLeverancier";
-            this.Text = "ManageLeverancier";
-            this.Load += new System.EventHandler(this.ManageLeverancier_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.epEmail)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epTelefoon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epGemeente)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epPostcode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epBus)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epHuisnummer)).EndInit();
+            this.Name = "SaveKlant";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SaveKlant";
+            this.Load += new System.EventHandler(this.SaveKlant_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epOpmerking)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epStraatnaam)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epContactPersoon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epBus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epTelefoon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epAchternaam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epPostcode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epHuisnummer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epVoornaam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epGemeente)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
+
+        private System.Windows.Forms.MaskedTextBox mtbTelefoonnummer;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtOpmerking;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtEmailadres;
         private System.Windows.Forms.Label label8;
@@ -384,23 +400,23 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtHuisNummer;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPersoon;
+        private System.Windows.Forms.TextBox txtVoornaam;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnVerwijderen;
-        private System.Windows.Forms.Button btnBewerken;
-        private System.Windows.Forms.Button btnToevoegen;
+        private System.Windows.Forms.Button btnAnnuleren;
+        private System.Windows.Forms.Button btnOpslaan;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ErrorProvider epOpmerking;
         private System.Windows.Forms.TextBox txtStraatnaam;
-        private System.Windows.Forms.ErrorProvider epEmail;
-        private System.Windows.Forms.ErrorProvider epTelefoon;
-        private System.Windows.Forms.ErrorProvider epGemeente;
-        private System.Windows.Forms.ErrorProvider epPostcode;
-        private System.Windows.Forms.ErrorProvider epBus;
-        private System.Windows.Forms.ErrorProvider epHuisnummer;
-        private System.Windows.Forms.ErrorProvider epStraatnaam;
-        private System.Windows.Forms.ErrorProvider epContactPersoon;
+        private System.Windows.Forms.TextBox txtAchternaam;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cbLeverancier;
-        private System.Windows.Forms.TextBox txtTelefoon;
+        private System.Windows.Forms.ErrorProvider epStraatnaam;
+        private System.Windows.Forms.ErrorProvider epBus;
+        private System.Windows.Forms.ErrorProvider epTelefoon;
+        private System.Windows.Forms.ErrorProvider epAchternaam;
+        private System.Windows.Forms.ErrorProvider epPostcode;
+        private System.Windows.Forms.ErrorProvider epHuisnummer;
+        private System.Windows.Forms.ErrorProvider epEmail;
+        private System.Windows.Forms.ErrorProvider epVoornaam;
+        private System.Windows.Forms.ErrorProvider epGemeente;
     }
 }

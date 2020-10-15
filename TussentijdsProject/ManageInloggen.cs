@@ -53,46 +53,6 @@ namespace TussentijdsProject
             }
         }
 
-        //private void btnToevoegen_Click(object sender, EventArgs e)
-        //{
-        //    DisplayErrorMessage();
-
-        //    if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
-        //    {
-        //        string gebruiker = txtUsername.Text;
-        //        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-        //        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-        //        {
-        //            ctx.InLoggens.Add(new InLoggen() { Username = txtUsername.Text, Wachtwoord = encrypWW, GebruikerId = (int)cbGebruiker.SelectedValue });
-        //            ctx.SaveChanges();
-        //        }
-        //        MessageBox.Show(gebruiker + " is succesvol toegevoegd");
-        //        txtUsername.Clear();
-        //        txtPassword.Clear();
-        //        cbGebruiker.SelectedIndex = 0;
-        //    }
-        //}
-
-        //private void btnBewerken_Click(object sender, EventArgs e)
-        //{
-        //    DisplayErrorMessage();
-
-        //    if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0 && cbGebruiker.SelectedIndex >= 0)
-        //    {
-        //        string gebruiker = txtUsername.Text;
-        //        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-        //        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-        //        {
-        //            ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue).FirstOrDefault().Username = txtUsername.Text.Trim();
-        //            ctx.InLoggens.Where(x => x.InloggenId == (int)lbUsername.SelectedValue).FirstOrDefault().Wachtwoord = encrypWW;
-        //            ctx.SaveChanges();
-        //        }
-        //        MessageBox.Show(gebruiker + " is succesvol bijgewerkt");
-        //        DisplayUsername();
-        //        cbGebruiker.SelectedIndex = 0;
-        //    }
-        //}
-
         public static string EncryptWachtwoord(string input)
         {
             MD5CryptoServiceProvider csp = new MD5CryptoServiceProvider();

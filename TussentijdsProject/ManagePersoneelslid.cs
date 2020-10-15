@@ -17,52 +17,54 @@ namespace TussentijdsProject
             InitializeComponent();
         }
 
+        public static bool IsNewPersoneelsLid = false;
+        public static int PersoneelsLidId = 0;
+
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            DisplayErrorMessage();
-
-            if (txtName.Text.Trim().Length > 0)
+            IsNewPersoneelsLid = true;
+            SavePersoneelsLid savePersoneelsLid = new SavePersoneelsLid();
+            if (savePersoneelsLid.ShowDialog() == DialogResult.OK)
             {
-                string personeelslid = txtName.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                {
-                    ctx.Personeelslids.Add(new Personeelslid() { Voornaam = txtName.Text });
-                    ctx.SaveChanges();
-                }
-                MessageBox.Show(personeelslid + " is succesvol toegevoegd");
-                txtName.Clear();
                 DisplayPersoneelsLid();
             }
         }
 
         private void btnBewerken_Click(object sender, EventArgs e)
         {
-            DisplayErrorMessage();
-
-            if (txtName.Text.Trim().Length > 0)
+            if (cbPersoneelsLid.SelectedIndex >= 0)
             {
-                string personeelslid = txtName.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                IsNewPersoneelsLid = false;
+                PersoneelsLidId = (int)cbPersoneelsLid.SelectedValue;
+                SavePersoneelsLid savePersoneelsLid = new SavePersoneelsLid();
+                if (savePersoneelsLid.ShowDialog() == DialogResult.OK)
                 {
-                    ctx.Personeelslids.Where(x => x.PersoneelslidID == (int)lbPersoneelslid.SelectedValue).FirstOrDefault().Voornaam = txtName.Text.Trim();
-                    ctx.SaveChanges();
+                    DisplayPersoneelsLid();
                 }
-                MessageBox.Show(personeelslid + " is succesvol bijgewerkt");
-
-                DisplayPersoneelsLid();
+            }
+            else
+            {
+                MessageBox.Show("Selecteer een personeelsLid om te bewerken");
             }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
-            string personeelslid = lbPersoneelslid.Text;
-            using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+            if (cbPersoneelsLid.SelectedIndex >= 0)
             {
-                ctx.Personeelslids.RemoveRange(ctx.Personeelslids.Where(x => x.PersoneelslidID == (int)lbPersoneelslid.SelectedValue));
-                ctx.SaveChanges();
+                string personeelslid = cbPersoneelsLid.Text;
+                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                {
+                    ctx.Personeelslids.RemoveRange(ctx.Personeelslids.Where(x => x.PersoneelslidID == (int)cbPersoneelsLid.SelectedValue));
+                    ctx.SaveChanges();
+                }
+                MessageBox.Show(personeelslid + " is succesvol verwijderd");
+                DisplayPersoneelsLid();
             }
-            MessageBox.Show(personeelslid + " is succesvol verwijderd");
-            DisplayPersoneelsLid();
+            else
+            {
+                MessageBox.Show("Selecteer een personeelsLid om te verwijderen");
+            }
         }
 
         private void ManagePersoneelslid_Load(object sender, EventArgs e)
@@ -80,28 +82,32 @@ namespace TussentijdsProject
                     Naam = x.Voornaam,
                     Id = x.PersoneelslidID
                 }).ToList();
-                lbPersoneelslid.DisplayMember = "Naam";
-                lbPersoneelslid.ValueMember = "Id";
-                lbPersoneelslid.DataSource = personeelsLidLijst;
+                cbPersoneelsLid.DisplayMember = "Naam";
+                cbPersoneelsLid.ValueMember = "Id";
+                cbPersoneelsLid.DataSource = personeelsLidLijst;
+                if (personeelsLidLijst.Count == 0)
+                {                    
+                    cbPersoneelsLid.Text = "";
+                    txtName.Clear();
+                }
             }
         }
 
-        public void DisplayErrorMessage()
+        private void cbPersoneelsLid_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string errorMessage = "";
-            if (txtName.Text.Trim().Length == 0)
+            if (cbPersoneelsLid.SelectedIndex >= 0)
             {
-                epNaam.SetError(txtName, "Voornaam naam is niet ingevuld");
-                errorMessage += "\r\n" + "Voornaam naam is niet ingevuld";
-            }
-            else
-            {
-                epNaam.Clear();
-            }
+                int personeelsLid = Convert.ToInt32(cbPersoneelsLid.SelectedValue);
 
-            if (errorMessage.Trim().Length > 0)
-            {
-                MessageBox.Show(errorMessage);
+                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                {
+                    var selectedPersoneelsLid = ctx.Personeelslids.Where(x => x.PersoneelslidID == personeelsLid).FirstOrDefault();
+
+                    if (selectedPersoneelsLid != null)
+                    {
+                        txtName.Text = selectedPersoneelsLid.Voornaam;
+                    }
+                }
             }
         }
     }

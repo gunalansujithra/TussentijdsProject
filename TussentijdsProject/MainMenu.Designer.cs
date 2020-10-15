@@ -30,12 +30,14 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.asfdcasdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.overzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bestellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leverancierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categorieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personeelslidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.overzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bestellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pnlDisplay = new System.Windows.Forms.Panel();
+            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,34 +61,25 @@
             this.leverancierToolStripMenuItem,
             this.klantToolStripMenuItem,
             this.categorieToolStripMenuItem,
-            this.personeelslidToolStripMenuItem});
+            this.personeelslidToolStripMenuItem,
+            this.productToolStripMenuItem});
             this.asfdcasdfToolStripMenuItem.Name = "asfdcasdfToolStripMenuItem";
             this.asfdcasdfToolStripMenuItem.Size = new System.Drawing.Size(191, 38);
             this.asfdcasdfToolStripMenuItem.Text = "Databaheer";
-            // 
-            // overzichtToolStripMenuItem
-            // 
-            this.overzichtToolStripMenuItem.Name = "overzichtToolStripMenuItem";
-            this.overzichtToolStripMenuItem.Size = new System.Drawing.Size(159, 38);
-            this.overzichtToolStripMenuItem.Text = "Overzicht";
-            // 
-            // bestellingToolStripMenuItem
-            // 
-            this.bestellingToolStripMenuItem.Name = "bestellingToolStripMenuItem";
-            this.bestellingToolStripMenuItem.Size = new System.Drawing.Size(157, 38);
-            this.bestellingToolStripMenuItem.Text = "Bestelling";
             // 
             // leverancierToolStripMenuItem
             // 
             this.leverancierToolStripMenuItem.Name = "leverancierToolStripMenuItem";
             this.leverancierToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
             this.leverancierToolStripMenuItem.Text = "Leverancier";
+            this.leverancierToolStripMenuItem.Click += new System.EventHandler(this.leverancierToolStripMenuItem_Click);
             // 
             // klantToolStripMenuItem
             // 
             this.klantToolStripMenuItem.Name = "klantToolStripMenuItem";
             this.klantToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
             this.klantToolStripMenuItem.Text = "Klant";
+            this.klantToolStripMenuItem.Click += new System.EventHandler(this.klantToolStripMenuItem_Click);
             // 
             // categorieToolStripMenuItem
             // 
@@ -100,18 +93,47 @@
             this.personeelslidToolStripMenuItem.Name = "personeelslidToolStripMenuItem";
             this.personeelslidToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
             this.personeelslidToolStripMenuItem.Text = "Personeelslid";
+            this.personeelslidToolStripMenuItem.Click += new System.EventHandler(this.personeelslidToolStripMenuItem_Click);
+            // 
+            // overzichtToolStripMenuItem
+            // 
+            this.overzichtToolStripMenuItem.Name = "overzichtToolStripMenuItem";
+            this.overzichtToolStripMenuItem.Size = new System.Drawing.Size(159, 38);
+            this.overzichtToolStripMenuItem.Text = "Overzicht";
+            // 
+            // bestellingToolStripMenuItem
+            // 
+            this.bestellingToolStripMenuItem.Name = "bestellingToolStripMenuItem";
+            this.bestellingToolStripMenuItem.Size = new System.Drawing.Size(157, 38);
+            this.bestellingToolStripMenuItem.Text = "Bestelling";
+            // 
+            // pnlDisplay
+            // 
+            this.pnlDisplay.Location = new System.Drawing.Point(13, 59);
+            this.pnlDisplay.Name = "pnlDisplay";
+            this.pnlDisplay.Size = new System.Drawing.Size(990, 757);
+            this.pnlDisplay.TabIndex = 1;
+            // 
+            // productToolStripMenuItem
+            // 
+            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
+            this.productToolStripMenuItem.Text = "Product";
+            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1015, 736);
+            this.ClientSize = new System.Drawing.Size(1015, 810);
+            this.Controls.Add(this.pnlDisplay);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainMenu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainMenu";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -130,5 +152,7 @@
         private System.Windows.Forms.ToolStripMenuItem personeelslidToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem overzichtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bestellingToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlDisplay;
+        private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
     }
 }

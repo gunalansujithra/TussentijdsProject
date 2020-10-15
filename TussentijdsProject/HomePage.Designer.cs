@@ -93,7 +93,7 @@
             this.btnDatabaheer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDatabaheer.Location = new System.Drawing.Point(0, 19);
             this.btnDatabaheer.Name = "btnDatabaheer";
-            this.btnDatabaheer.Size = new System.Drawing.Size(191, 85);
+            this.btnDatabaheer.Size = new System.Drawing.Size(191, 74);
             this.btnDatabaheer.TabIndex = 0;
             this.btnDatabaheer.Text = "Databaheer";
             this.btnDatabaheer.UseVisualStyleBackColor = true;
@@ -108,9 +108,9 @@
             this.panel2.Controls.Add(this.btnCategorie);
             this.panel2.Controls.Add(this.btnKlant);
             this.panel2.Controls.Add(this.btnLeverancier);
-            this.panel2.Location = new System.Drawing.Point(0, 86);
+            this.panel2.Location = new System.Drawing.Point(0, 92);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(193, 565);
+            this.panel2.Size = new System.Drawing.Size(193, 364);
             this.panel2.TabIndex = 1;
             this.panel2.MouseEnter += new System.EventHandler(this.panel2_MouseEnter);
             this.panel2.MouseLeave += new System.EventHandler(this.panel2_MouseLeave);

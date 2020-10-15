@@ -139,6 +139,12 @@
     <Compile Include="ManagePersoneelslid.Designer.cs">
       <DependentUpon>ManagePersoneelslid.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageProduct.Designer.cs">
+      <DependentUpon>ManageProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Personeelslid.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
@@ -147,6 +153,36 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveCategorie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveCategorie.Designer.cs">
+      <DependentUpon>SaveCategorie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaveKlant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveKlant.Designer.cs">
+      <DependentUpon>SaveKlant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaveLeverancier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveLeverancier.Designer.cs">
+      <DependentUpon>SaveLeverancier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SavePersoneelsLid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SavePersoneelsLid.Designer.cs">
+      <DependentUpon>SavePersoneelsLid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SaveProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SaveProduct.Designer.cs">
+      <DependentUpon>SaveProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCCategorie.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -177,6 +213,9 @@
     <EmbeddedResource Include="ManagePersoneelslid.resx">
       <DependentUpon>ManagePersoneelslid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManageProduct.resx">
+      <DependentUpon>ManageProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -186,6 +225,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SaveCategorie.resx">
+      <DependentUpon>SaveCategorie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveKlant.resx">
+      <DependentUpon>SaveKlant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveLeverancier.resx">
+      <DependentUpon>SaveLeverancier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SavePersoneelsLid.resx">
+      <DependentUpon>SavePersoneelsLid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveProduct.resx">
+      <DependentUpon>SaveProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCCategorie.resx">
       <DependentUpon>UCCategorie.cs</DependentUpon>
     </EmbeddedResource>

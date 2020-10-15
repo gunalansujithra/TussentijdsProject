@@ -16,7 +16,7 @@ namespace TussentijdsProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new InloggenScreen());
+            Application.Run(new MainMenu());
         }
     }
 }

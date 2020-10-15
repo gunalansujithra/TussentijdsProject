@@ -36,11 +36,11 @@
             this.cbGebruiker = new System.Windows.Forms.ComboBox();
             this.lblGebruiker = new System.Windows.Forms.Label();
             this.epGebruiker = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label4 = new System.Windows.Forms.Label();
             this.epUserName = new System.Windows.Forms.ErrorProvider(this.components);
             this.epWachtwoord = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnToevoegen = new System.Windows.Forms.Button();
             this.btnAnnuleren = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.epGebruiker)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epUserName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epWachtwoord)).BeginInit();
@@ -114,6 +114,21 @@
             this.epGebruiker.ContainerControl = this;
             this.epGebruiker.RightToLeft = true;
             // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.epGebruiker.SetIconAlignment(this.label4, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
+            this.label4.Location = new System.Drawing.Point(531, 249);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(224, 85);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Een lengte van 8-20 characters\r\nMinstens 1 vreemd teken\r\nMinstens 1 hoofdletter\r\n" +
+    "Minstens 1 kleine letter\r\nMinstens 1 cijfer";
+            // 
             // epUserName
             // 
             this.epUserName.ContainerControl = this;
@@ -152,21 +167,6 @@
             this.btnAnnuleren.Text = "Annuleren";
             this.btnAnnuleren.UseVisualStyleBackColor = false;
             this.btnAnnuleren.Click += new System.EventHandler(this.btnAnnuleren_Click);
-            // 
-            // label4
-            // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.epGebruiker.SetIconAlignment(this.label4, System.Windows.Forms.ErrorIconAlignment.BottomLeft);
-            this.label4.Location = new System.Drawing.Point(531, 249);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label4.Size = new System.Drawing.Size(224, 85);
-            this.label4.TabIndex = 19;
-            this.label4.Text = "Een lengte van 8-20 characters\r\nMinstens 1 vreemd teken\r\nMinstens 1 hoofdletter\r\n" +
-    "Minstens 1 kleine letter\r\nMinstens 1 cijfer";
             // 
             // ManageInloggen
             // 
