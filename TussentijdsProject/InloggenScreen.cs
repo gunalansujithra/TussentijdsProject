@@ -18,7 +18,7 @@ namespace TussentijdsProject
             InitializeComponent();
         }
 
-        public static bool IsNewUser = false;
+        public static bool IsWachtwoordVergeten = false;
         public static string UserName = "";
         private void btnInloggen_Click(object sender, EventArgs e)
         {
@@ -31,13 +31,13 @@ namespace TussentijdsProject
                     //code for Usernames
                     string gebruiker = txtUsername.Text;
                     string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-                    var usersDetails = ctx.InLoggens.Where(x => x.Username == gebruiker).FirstOrDefault();
+                    var usersDetails = ctx.InLoggens.Where(x => x.Username.ToLower() == gebruiker.ToLower()).FirstOrDefault();
 
-                    if (usersDetails != null && usersDetails.Username == gebruiker && usersDetails.Wachtwoord == encrypWW)
+                    if (usersDetails != null && usersDetails.Username.ToLower() == gebruiker.ToLower() && usersDetails.Wachtwoord == encrypWW)
                     {
-                        HomePage homePage = new HomePage();
+                        MainMenu mainMenu = new MainMenu();
                         this.Hide();
-                        homePage.Show();
+                        mainMenu.Show();
                     }
                     else
                     {
@@ -114,22 +114,11 @@ namespace TussentijdsProject
             Application.Exit();
         }
 
-        private void lnkNewAccount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            IsNewUser = true;
-            ManageInloggen manageInloggen = new ManageInloggen();
-            if (manageInloggen.ShowDialog() == DialogResult.OK)
-            {
-                txtUsername.Clear();
-                txtPassword.Clear();
-            }
-        }
-
         private void lntWwVergeten_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            IsNewUser = false;
+            IsWachtwoordVergeten = true;
             UserName = txtUsername.Text;
-            ManageInloggen manageInloggen = new ManageInloggen();
+            SaveInloggen manageInloggen = new SaveInloggen();
             if (manageInloggen.ShowDialog() == DialogResult.OK)
             {
                 txtPassword.Clear();

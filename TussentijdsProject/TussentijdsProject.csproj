@@ -73,6 +73,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BestellingenDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="BestellingKlant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BestellingKlant.Designer.cs">
+      <DependentUpon>BestellingKlant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BestellingLeverancier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BestellingLeverancier.Designer.cs">
+      <DependentUpon>BestellingLeverancier.cs</DependentUpon>
+    </Compile>
     <Compile Include="BestellingProduct.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
@@ -109,6 +121,12 @@
     <Compile Include="ManageCategorie.Designer.cs">
       <DependentUpon>ManageCategorie.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageInloggen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageInloggen.Designer.cs">
+      <DependentUpon>ManageInloggen.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageKlant.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,11 +139,11 @@
     <Compile Include="InloggenScreen.Designer.cs">
       <DependentUpon>InloggenScreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ManageInloggen.cs">
+    <Compile Include="SaveInloggen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ManageInloggen.Designer.cs">
-      <DependentUpon>ManageInloggen.cs</DependentUpon>
+    <Compile Include="SaveInloggen.Designer.cs">
+      <DependentUpon>SaveInloggen.cs</DependentUpon>
     </Compile>
     <Compile Include="ManageLeverancier.cs">
       <SubType>Form</SubType>
@@ -183,12 +201,24 @@
     <Compile Include="SaveProduct.Designer.cs">
       <DependentUpon>SaveProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="temp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="temp.Designer.cs">
+      <DependentUpon>temp.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCCategorie.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCCategorie.Designer.cs">
       <DependentUpon>UCCategorie.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BestellingKlant.resx">
+      <DependentUpon>BestellingKlant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BestellingLeverancier.resx">
+      <DependentUpon>BestellingLeverancier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
     </EmbeddedResource>
@@ -203,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageInloggen.resx">
       <DependentUpon>ManageInloggen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SaveInloggen.resx">
+      <DependentUpon>SaveInloggen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageKlant.resx">
       <DependentUpon>ManageKlant.cs</DependentUpon>
@@ -239,6 +272,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SaveProduct.resx">
       <DependentUpon>SaveProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="temp.resx">
+      <DependentUpon>temp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCCategorie.resx">
       <DependentUpon>UCCategorie.cs</DependentUpon>

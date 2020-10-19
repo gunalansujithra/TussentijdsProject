@@ -43,8 +43,6 @@
             this.cbWachtwoord = new System.Windows.Forms.CheckBox();
             this.lntWwVergeten = new System.Windows.Forms.LinkLabel();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.lnkNewAccount = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.epUserName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epWachtwoord)).BeginInit();
             this.panel1.SuspendLayout();
@@ -64,7 +62,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.txtUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtUsername.Location = new System.Drawing.Point(242, 250);
             this.txtUsername.Margin = new System.Windows.Forms.Padding(4);
             this.txtUsername.Name = "txtUsername";
@@ -73,7 +71,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtPassword.Location = new System.Drawing.Point(242, 339);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
             this.txtPassword.Name = "txtPassword";
@@ -184,38 +182,12 @@
             this.label4.TabIndex = 2;
             this.label4.Text = "Log in op uw account";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(391, 500);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 25);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "- of -";
-            // 
-            // lnkNewAccount
-            // 
-            this.lnkNewAccount.AutoSize = true;
-            this.lnkNewAccount.DisabledLinkColor = System.Drawing.Color.White;
-            this.lnkNewAccount.LinkColor = System.Drawing.Color.White;
-            this.lnkNewAccount.Location = new System.Drawing.Point(315, 538);
-            this.lnkNewAccount.Name = "lnkNewAccount";
-            this.lnkNewAccount.Size = new System.Drawing.Size(221, 23);
-            this.lnkNewAccount.TabIndex = 11;
-            this.lnkNewAccount.TabStop = true;
-            this.lnkNewAccount.Text = "Account aanmaken?";
-            this.lnkNewAccount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkNewAccount_LinkClicked);
-            // 
             // InloggenScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(873, 654);
-            this.Controls.Add(this.lnkNewAccount);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lntWwVergeten);
             this.Controls.Add(this.cbWachtwoord);
@@ -255,8 +227,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnShutdown;
-        private System.Windows.Forms.LinkLabel lnkNewAccount;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.LinkLabel lntWwVergeten;
     }

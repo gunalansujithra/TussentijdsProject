@@ -26,3 +26,19 @@
 1.Menu completed
 2.Products completed
 3.Redesigning Categorie, Klant, PersoneelsLid completed
+
+16/10/2020
+-----------
+1.Moved create new user login screen
+
+19/10/2020
+-----------
+1.Bestelling Klant - WIP
+
+
+
+
+
+
+
+

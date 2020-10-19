@@ -62,5 +62,32 @@ namespace TussentijdsProject
             pnlDisplay.Controls.Add(manageProduct);
             manageProduct.Show();
         }
+
+        private void usernaamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageInloggen manageInloggen = new ManageInloggen();
+            manageInloggen.TopLevel = false;
+            pnlDisplay.Controls.Clear();
+            pnlDisplay.Controls.Add(manageInloggen);
+            manageInloggen.Show();
+        }
+
+        private void leverancierToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BestellingLeverancier bestellingLeverancier = new BestellingLeverancier();
+            bestellingLeverancier.TopLevel = false;
+            pnlDisplay.Controls.Clear();
+            pnlDisplay.Controls.Add(bestellingLeverancier);
+            bestellingLeverancier.Show();
+        }
+
+        private void klantToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            BestellingKlant bestellingKlant = new BestellingKlant();
+            bestellingKlant.TopLevel = false;
+            pnlDisplay.Controls.Clear();
+            pnlDisplay.Controls.Add(bestellingKlant);
+            bestellingKlant.Show();
+        }
     }
 }

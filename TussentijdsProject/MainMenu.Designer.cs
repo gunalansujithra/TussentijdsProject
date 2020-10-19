@@ -34,10 +34,13 @@
             this.klantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.categorieToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.personeelslidToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usernaamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.overzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bestellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leverancierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.klantToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDisplay = new System.Windows.Forms.Panel();
-            this.productToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +65,8 @@
             this.klantToolStripMenuItem,
             this.categorieToolStripMenuItem,
             this.personeelslidToolStripMenuItem,
-            this.productToolStripMenuItem});
+            this.productToolStripMenuItem,
+            this.usernaamToolStripMenuItem});
             this.asfdcasdfToolStripMenuItem.Name = "asfdcasdfToolStripMenuItem";
             this.asfdcasdfToolStripMenuItem.Size = new System.Drawing.Size(191, 38);
             this.asfdcasdfToolStripMenuItem.Text = "Databaheer";
@@ -95,6 +99,20 @@
             this.personeelslidToolStripMenuItem.Text = "Personeelslid";
             this.personeelslidToolStripMenuItem.Click += new System.EventHandler(this.personeelslidToolStripMenuItem_Click);
             // 
+            // productToolStripMenuItem
+            // 
+            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
+            this.productToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
+            this.productToolStripMenuItem.Text = "Product";
+            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
+            // 
+            // usernaamToolStripMenuItem
+            // 
+            this.usernaamToolStripMenuItem.Name = "usernaamToolStripMenuItem";
+            this.usernaamToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
+            this.usernaamToolStripMenuItem.Text = "Usernaam";
+            this.usernaamToolStripMenuItem.Click += new System.EventHandler(this.usernaamToolStripMenuItem_Click);
+            // 
             // overzichtToolStripMenuItem
             // 
             this.overzichtToolStripMenuItem.Name = "overzichtToolStripMenuItem";
@@ -103,9 +121,26 @@
             // 
             // bestellingToolStripMenuItem
             // 
+            this.bestellingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.leverancierToolStripMenuItem1,
+            this.klantToolStripMenuItem1});
             this.bestellingToolStripMenuItem.Name = "bestellingToolStripMenuItem";
             this.bestellingToolStripMenuItem.Size = new System.Drawing.Size(157, 38);
             this.bestellingToolStripMenuItem.Text = "Bestelling";
+            // 
+            // leverancierToolStripMenuItem1
+            // 
+            this.leverancierToolStripMenuItem1.Name = "leverancierToolStripMenuItem1";
+            this.leverancierToolStripMenuItem1.Size = new System.Drawing.Size(264, 38);
+            this.leverancierToolStripMenuItem1.Text = "Leverancier";
+            this.leverancierToolStripMenuItem1.Click += new System.EventHandler(this.leverancierToolStripMenuItem1_Click);
+            // 
+            // klantToolStripMenuItem1
+            // 
+            this.klantToolStripMenuItem1.Name = "klantToolStripMenuItem1";
+            this.klantToolStripMenuItem1.Size = new System.Drawing.Size(264, 38);
+            this.klantToolStripMenuItem1.Text = "Klant";
+            this.klantToolStripMenuItem1.Click += new System.EventHandler(this.klantToolStripMenuItem1_Click);
             // 
             // pnlDisplay
             // 
@@ -113,13 +148,6 @@
             this.pnlDisplay.Name = "pnlDisplay";
             this.pnlDisplay.Size = new System.Drawing.Size(990, 757);
             this.pnlDisplay.TabIndex = 1;
-            // 
-            // productToolStripMenuItem
-            // 
-            this.productToolStripMenuItem.Name = "productToolStripMenuItem";
-            this.productToolStripMenuItem.Size = new System.Drawing.Size(281, 38);
-            this.productToolStripMenuItem.Text = "Product";
-            this.productToolStripMenuItem.Click += new System.EventHandler(this.productToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -154,5 +182,8 @@
         private System.Windows.Forms.ToolStripMenuItem bestellingToolStripMenuItem;
         private System.Windows.Forms.Panel pnlDisplay;
         private System.Windows.Forms.ToolStripMenuItem productToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leverancierToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem klantToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem usernaamToolStripMenuItem;
     }
 }

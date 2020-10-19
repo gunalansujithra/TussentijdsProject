@@ -17,77 +17,6 @@ namespace TussentijdsProject
             InitializeComponent();
         }
 
-        private void btnOpslaan_Click(object sender, EventArgs e)
-        {
-            if (ManageLeverancier.IsNewLeverancier)
-            {
-                DisplayErrorMessage();
-
-                if (txtPersoon.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
-                        && txtStraatnaam.Text.Trim().Length > 0 && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0
-                        && txtPostcode.Text.Trim().Length > 0 && txtGemeente.Text.Trim().Length > 0)
-                {
-                    string levarancier = txtPersoon.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Leveranciers.Add(new Leverancier()
-                        {
-                            Contactpersoon = txtPersoon.Text.Trim(),
-                            Telefoonnummer = mtbTelefoonnummer.Text.Trim(),
-                            Emailadres = txtEmailadres.Text.Trim(),
-                            Straatnaam = txtStraatnaam.Text.Trim(),
-                            Huisnummer = txtHuisNummer.Text.Trim(),
-                            Bus = txtBus.Text.Trim(),
-                            Postcode = Convert.ToInt32(txtPostcode.Text.Trim()),
-                            Gemeente = txtGemeente.Text.Trim()
-                        });
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(levarancier + " is succesvol toegevoegd");
-                    txtPersoon.Clear();
-                    mtbTelefoonnummer.Clear();
-                    txtEmailadres.Clear();
-                    txtStraatnaam.Clear();
-                    txtHuisNummer.Clear();
-                    txtBus.Clear();
-                    txtPostcode.Clear();
-                    txtGemeente.Clear();
-                    this.DialogResult = DialogResult.OK;
-                }
-            }
-            else
-            {
-                DisplayErrorMessage();
-
-                int leverancierId = ManageLeverancier.LeverancierId;
-                if (txtPersoon.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
-                        && txtStraatnaam.Text.Trim().Length > 0 && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0
-                        && txtPostcode.Text.Trim().Length > 0 && txtGemeente.Text.Trim().Length > 0)
-                {
-                    string levarancier = txtPersoon.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Contactpersoon = txtPersoon.Text.Trim();
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Telefoonnummer = mtbTelefoonnummer.Text.Trim();
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Emailadres = txtEmailadres.Text.Trim();
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Straatnaam = txtStraatnaam.Text.Trim();
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Huisnummer = txtHuisNummer.Text.Trim();
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Bus = txtBus.Text.Trim();
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Postcode = Convert.ToInt32(txtPostcode.Text.Trim());
-                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Gemeente = txtGemeente.Text.Trim();
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(levarancier + " is succesvol bijgewerkt");
-                    this.DialogResult = DialogResult.OK;
-                }
-            }
-        }
-
-        private void btnAnnuleren_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-
         public void DisplayErrorMessage()
         {
             string errorMessage = "";
@@ -211,6 +140,77 @@ namespace TussentijdsProject
                     }
                 }
             }
+        }
+
+        private void btnOpslaan_Click(object sender, EventArgs e)
+        {
+            if (ManageLeverancier.IsNewLeverancier)
+            {
+                DisplayErrorMessage();
+
+                if (txtPersoon.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
+                        && txtStraatnaam.Text.Trim().Length > 0 && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0
+                        && txtPostcode.Text.Trim().Length > 0 && txtGemeente.Text.Trim().Length > 0)
+                {
+                    string levarancier = txtPersoon.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Leveranciers.Add(new Leverancier()
+                        {
+                            Contactpersoon = txtPersoon.Text.Trim(),
+                            Telefoonnummer = mtbTelefoonnummer.Text.Trim(),
+                            Emailadres = txtEmailadres.Text.Trim(),
+                            Straatnaam = txtStraatnaam.Text.Trim(),
+                            Huisnummer = txtHuisNummer.Text.Trim(),
+                            Bus = txtBus.Text.Trim(),
+                            Postcode = Convert.ToInt32(txtPostcode.Text.Trim()),
+                            Gemeente = txtGemeente.Text.Trim()
+                        });
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(levarancier + " is succesvol toegevoegd");
+                    txtPersoon.Clear();
+                    mtbTelefoonnummer.Clear();
+                    txtEmailadres.Clear();
+                    txtStraatnaam.Clear();
+                    txtHuisNummer.Clear();
+                    txtBus.Clear();
+                    txtPostcode.Clear();
+                    txtGemeente.Clear();
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+            else
+            {
+                DisplayErrorMessage();
+
+                int leverancierId = ManageLeverancier.LeverancierId;
+                if (txtPersoon.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
+                        && txtStraatnaam.Text.Trim().Length > 0 && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0
+                        && txtPostcode.Text.Trim().Length > 0 && txtGemeente.Text.Trim().Length > 0)
+                {
+                    string levarancier = txtPersoon.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Contactpersoon = txtPersoon.Text.Trim();
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Telefoonnummer = mtbTelefoonnummer.Text.Trim();
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Emailadres = txtEmailadres.Text.Trim();
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Straatnaam = txtStraatnaam.Text.Trim();
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Huisnummer = txtHuisNummer.Text.Trim();
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Bus = txtBus.Text.Trim();
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Postcode = Convert.ToInt32(txtPostcode.Text.Trim());
+                        ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault().Gemeente = txtGemeente.Text.Trim();
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(levarancier + " is succesvol bijgewerkt");
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+        }
+
+        private void btnAnnuleren_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }

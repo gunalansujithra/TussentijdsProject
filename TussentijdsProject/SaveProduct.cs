@@ -87,74 +87,6 @@ namespace TussentijdsProject
             }
         }
 
-        private void btnOpslaan_Click(object sender, EventArgs e)
-        {
-            if (ManageProduct.IsNewProduct)
-            {
-                DisplayErrorMessage();
-
-                if (txtNaam.Text.Trim().Length > 0 && txtInkoopprijs.Text.Trim().Length > 0 && txtMarge.Text.Trim().Length > 0
-                        && txtEenheid.Text.Trim().Length > 0 && txtBtw.Text.Trim().Length > 0 && cbLeverancier.SelectedIndex >= 0
-                        && cbCategorie.SelectedIndex >= 0)
-                {
-                    string product = txtNaam.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Products.Add(new Product()
-                        {
-                            Naam = txtNaam.Text.Trim(),
-                            Inkoopprijs = Convert.ToDecimal(txtInkoopprijs.Text.Trim()),
-                            Marge = Convert.ToDecimal(txtMarge.Text.Trim()),
-                            Eenheid = Convert.ToInt32(txtEenheid.Text.Trim()),
-                            BTW = Convert.ToInt32(txtBtw.Text.Trim()),
-                            LeverancierID = (int)cbLeverancier.SelectedValue,
-                            CategorieID = (int)cbCategorie.SelectedValue
-                        });
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(product + " is succesvol toegevoegd");
-                    txtNaam.Clear();
-                    txtInkoopprijs.Clear();
-                    txtMarge.Clear();
-                    txtEenheid.Clear();
-                    txtBtw.Clear();
-                    cbLeverancier.SelectedIndex = -1;
-                    cbCategorie.SelectedIndex = -1;
-                    this.DialogResult = DialogResult.OK;
-                }
-            }
-            else
-            {
-                DisplayErrorMessage();
-
-                int productId = ManageProduct.ProductId;
-                if (txtNaam.Text.Trim().Length > 0 && txtInkoopprijs.Text.Trim().Length > 0 && txtMarge.Text.Trim().Length > 0
-                        && txtEenheid.Text.Trim().Length > 0 && txtBtw.Text.Trim().Length > 0 && cbLeverancier.SelectedIndex >= 0
-                        && cbCategorie.SelectedIndex >= 0)
-                {
-                    string product = txtNaam.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Naam = txtNaam.Text.Trim();
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Inkoopprijs = Convert.ToDecimal(txtInkoopprijs.Text.Trim());
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Marge = Convert.ToDecimal(txtMarge.Text.Trim());
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Eenheid = Convert.ToInt32(txtEenheid.Text.Trim());
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().BTW = Convert.ToInt32(txtBtw.Text.Trim());
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().LeverancierID = (int)cbLeverancier.SelectedValue;
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().CategorieID = (int)cbCategorie.SelectedValue;
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(product + " is succesvol bijgewerkt");
-                    this.DialogResult = DialogResult.OK;
-                }
-            }
-        }
-
-        private void btnAnnuleren_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-        }
-
         public void DisplayErrorMessage()
         {
             string errorMessage = "";
@@ -232,6 +164,74 @@ namespace TussentijdsProject
             {
                 MessageBox.Show(errorMessage);
             }
+        }
+
+        private void btnOpslaan_Click(object sender, EventArgs e)
+        {
+            if (ManageProduct.IsNewProduct)
+            {
+                DisplayErrorMessage();
+
+                if (txtNaam.Text.Trim().Length > 0 && txtInkoopprijs.Text.Trim().Length > 0 && txtMarge.Text.Trim().Length > 0
+                        && txtEenheid.Text.Trim().Length > 0 && txtBtw.Text.Trim().Length > 0 && cbLeverancier.SelectedIndex >= 0
+                        && cbCategorie.SelectedIndex >= 0)
+                {
+                    string product = txtNaam.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Products.Add(new Product()
+                        {
+                            Naam = txtNaam.Text.Trim(),
+                            Inkoopprijs = Convert.ToDecimal(txtInkoopprijs.Text.Trim()),
+                            Marge = Convert.ToDecimal(txtMarge.Text.Trim()),
+                            Eenheid = Convert.ToInt32(txtEenheid.Text.Trim()),
+                            BTW = Convert.ToInt32(txtBtw.Text.Trim()),
+                            LeverancierID = (int)cbLeverancier.SelectedValue,
+                            CategorieID = (int)cbCategorie.SelectedValue
+                        });
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(product + " is succesvol toegevoegd");
+                    txtNaam.Clear();
+                    txtInkoopprijs.Clear();
+                    txtMarge.Clear();
+                    txtEenheid.Clear();
+                    txtBtw.Clear();
+                    cbLeverancier.SelectedIndex = -1;
+                    cbCategorie.SelectedIndex = -1;
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+            else
+            {
+                DisplayErrorMessage();
+
+                int productId = ManageProduct.ProductId;
+                if (txtNaam.Text.Trim().Length > 0 && txtInkoopprijs.Text.Trim().Length > 0 && txtMarge.Text.Trim().Length > 0
+                        && txtEenheid.Text.Trim().Length > 0 && txtBtw.Text.Trim().Length > 0 && cbLeverancier.SelectedIndex >= 0
+                        && cbCategorie.SelectedIndex >= 0)
+                {
+                    string product = txtNaam.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Naam = txtNaam.Text.Trim();
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Inkoopprijs = Convert.ToDecimal(txtInkoopprijs.Text.Trim());
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Marge = Convert.ToDecimal(txtMarge.Text.Trim());
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Eenheid = Convert.ToInt32(txtEenheid.Text.Trim());
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().BTW = Convert.ToInt32(txtBtw.Text.Trim());
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().LeverancierID = (int)cbLeverancier.SelectedValue;
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().CategorieID = (int)cbCategorie.SelectedValue;
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(product + " is succesvol bijgewerkt");
+                    this.DialogResult = DialogResult.OK;
+                }
+            }
+        }
+
+        private void btnAnnuleren_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
         }
     }
 }
