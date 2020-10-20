@@ -46,16 +46,14 @@
             this.btnAfrekenen = new System.Windows.Forms.Button();
             this.txtUnits = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTotaalPrijs = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.epPersoneelLids = new System.Windows.Forms.ErrorProvider(this.components);
             this.epKlant = new System.Windows.Forms.ErrorProvider(this.components);
-            this.epCategorie = new System.Windows.Forms.ErrorProvider(this.components);
             this.epProduct = new System.Windows.Forms.ErrorProvider(this.components);
             this.epUnits = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.epPersoneelLids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epKlant)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epCategorie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epUnits)).BeginInit();
             this.SuspendLayout();
@@ -216,6 +214,7 @@
             this.btnOpslaan.TabIndex = 55;
             this.btnOpslaan.Text = "Opslaan in een word document";
             this.btnOpslaan.UseVisualStyleBackColor = false;
+            this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
             // 
             // btnAfrekenen
             // 
@@ -250,12 +249,13 @@
             this.label4.TabIndex = 56;
             this.label4.Text = "Units";
             // 
-            // textBox1
+            // txtTotaalPrijs
             // 
-            this.textBox1.Location = new System.Drawing.Point(712, 633);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 28);
-            this.textBox1.TabIndex = 59;
+            this.txtTotaalPrijs.Enabled = false;
+            this.txtTotaalPrijs.Location = new System.Drawing.Point(712, 633);
+            this.txtTotaalPrijs.Name = "txtTotaalPrijs";
+            this.txtTotaalPrijs.Size = new System.Drawing.Size(197, 28);
+            this.txtTotaalPrijs.TabIndex = 59;
             // 
             // label5
             // 
@@ -276,10 +276,6 @@
             // 
             this.epKlant.ContainerControl = this;
             // 
-            // epCategorie
-            // 
-            this.epCategorie.ContainerControl = this;
-            // 
             // epProduct
             // 
             this.epProduct.ContainerControl = this;
@@ -294,7 +290,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1062, 785);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTotaalPrijs);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUnits);
             this.Controls.Add(this.label4);
@@ -322,7 +318,6 @@
             this.Load += new System.EventHandler(this.BestellingKlant_Load);
             ((System.ComponentModel.ISupportInitialize)(this.epPersoneelLids)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epKlant)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.epCategorie)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epProduct)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.epUnits)).EndInit();
             this.ResumeLayout(false);
@@ -349,11 +344,10 @@
         private System.Windows.Forms.Button btnAfrekenen;
         private System.Windows.Forms.TextBox txtUnits;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotaalPrijs;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ErrorProvider epPersoneelLids;
         private System.Windows.Forms.ErrorProvider epKlant;
-        private System.Windows.Forms.ErrorProvider epCategorie;
         private System.Windows.Forms.ErrorProvider epProduct;
         private System.Windows.Forms.ErrorProvider epUnits;
     }

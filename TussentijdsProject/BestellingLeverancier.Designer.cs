@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.components = new System.ComponentModel.Container();
+            this.txtTotaalPrijs = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtUnits = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,14 +47,22 @@
             this.lblCategorie = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbPersoneelsLid = new System.Windows.Forms.ComboBox();
+            this.epPersoneelLids = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epLeverancier = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epProduct = new System.Windows.Forms.ErrorProvider(this.components);
+            this.epUnits = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.epPersoneelLids)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epLeverancier)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epProduct)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epUnits)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtTotaalPrijs
             // 
-            this.textBox1.Location = new System.Drawing.Point(716, 625);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(197, 28);
-            this.textBox1.TabIndex = 78;
+            this.txtTotaalPrijs.Location = new System.Drawing.Point(716, 625);
+            this.txtTotaalPrijs.Name = "txtTotaalPrijs";
+            this.txtTotaalPrijs.Size = new System.Drawing.Size(197, 28);
+            this.txtTotaalPrijs.TabIndex = 78;
             // 
             // label5
             // 
@@ -97,6 +106,7 @@
             this.btnAfrekenen.TabIndex = 73;
             this.btnAfrekenen.Text = "Factuur Genereren";
             this.btnAfrekenen.UseVisualStyleBackColor = false;
+            this.btnAfrekenen.Click += new System.EventHandler(this.btnAfrekenen_Click);
             // 
             // btnWissen
             // 
@@ -111,6 +121,7 @@
             this.btnWissen.TabIndex = 72;
             this.btnWissen.Text = "Winkelmandje Wissen";
             this.btnWissen.UseVisualStyleBackColor = false;
+            this.btnWissen.Click += new System.EventHandler(this.btnWissen_Click);
             // 
             // btnVerwijderen
             // 
@@ -125,6 +136,7 @@
             this.btnVerwijderen.TabIndex = 71;
             this.btnVerwijderen.Text = "Winkelmandje Verwijderen";
             this.btnVerwijderen.UseVisualStyleBackColor = false;
+            this.btnVerwijderen.Click += new System.EventHandler(this.btnVerwijderen_Click);
             // 
             // btnToevoegen
             // 
@@ -139,6 +151,7 @@
             this.btnToevoegen.TabIndex = 70;
             this.btnToevoegen.Text = "Voeg toe aan winkelmandje";
             this.btnToevoegen.UseVisualStyleBackColor = false;
+            this.btnToevoegen.Click += new System.EventHandler(this.btnToevoegen_Click);
             // 
             // label3
             // 
@@ -238,13 +251,29 @@
             this.cbPersoneelsLid.Size = new System.Drawing.Size(318, 29);
             this.cbPersoneelsLid.TabIndex = 60;
             // 
+            // epPersoneelLids
+            // 
+            this.epPersoneelLids.ContainerControl = this;
+            // 
+            // epLeverancier
+            // 
+            this.epLeverancier.ContainerControl = this;
+            // 
+            // epProduct
+            // 
+            this.epProduct.ContainerControl = this;
+            // 
+            // epUnits
+            // 
+            this.epUnits.ContainerControl = this;
+            // 
             // BestellingLeverancier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1000, 762);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTotaalPrijs);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtUnits);
             this.Controls.Add(this.label4);
@@ -268,6 +297,11 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BestellingLeverancier";
             this.Text = "BestellingLeverancier";
+            this.Load += new System.EventHandler(this.BestellingLeverancier_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.epPersoneelLids)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epLeverancier)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epProduct)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.epUnits)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,7 +309,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotaalPrijs;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtUnits;
         private System.Windows.Forms.Label label4;
@@ -293,5 +327,9 @@
         private System.Windows.Forms.Label lblCategorie;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cbPersoneelsLid;
+        private System.Windows.Forms.ErrorProvider epPersoneelLids;
+        private System.Windows.Forms.ErrorProvider epLeverancier;
+        private System.Windows.Forms.ErrorProvider epProduct;
+        private System.Windows.Forms.ErrorProvider epUnits;
     }
 }

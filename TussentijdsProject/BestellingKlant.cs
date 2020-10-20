@@ -83,12 +83,11 @@ namespace TussentijdsProject
                 //code for Product
                 var productLijst = ctx.Products.Select(x => new
                 {
-                    Naam = x.Naam,
+                    Naam = x.Naam + " (Prijs: " + (x.Inkoopprijs + x.Marge) + ")",
                     Id = x.ProductID
                 }).ToList();
                 lbProduct.DisplayMember = "Naam";
                 lbProduct.ValueMember = "Id";
-                //lbProduct.DataSource = null;
                 lbProduct.DataSource = productLijst;
             }
         }
@@ -102,13 +101,12 @@ namespace TussentijdsProject
                 {
                     var productLijst = ctx.Products.Select(x => new
                     {
-                        Naam = x.Naam,
+                        Naam = x.Naam + " (Prijs: " + (x.Inkoopprijs + x.Marge) + ")",
                         Id = x.ProductID,
                         CategorieID = x.CategorieID
                     }).Where(p => p.CategorieID == (int)cbCategorie.SelectedValue).ToList();
                     lbProduct.DisplayMember = "Naam";
                     lbProduct.ValueMember = "Id";
-                    //lbProduct.DataSource = null;
                     lbProduct.DataSource = productLijst;
                 }
             }
@@ -118,40 +116,52 @@ namespace TussentijdsProject
         {
             KlantProductLijst.Clear();
             lbKaart.DataSource = null;
+            CalculateTotaalPrijs();
         }
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
             DisplayErrorMessage();
 
-            if (cbPersoneelsLid.SelectedIndex >= 0 && cbKlant.SelectedIndex >= 0 && cbCategorie.SelectedIndex >= 0
-                        && lbProduct.SelectedItems.Count > 0  && txtUnits.Text.Trim().Length > 0)
+            if (cbPersoneelsLid.SelectedIndex >= 0 && cbKlant.SelectedIndex >= 0 //&& cbCategorie.SelectedIndex >= 0
+                        && lbProduct.SelectedItems.Count > 0 && txtUnits.Text.Trim().Length > 0)
             {
                 int productId = Convert.ToInt32(lbProduct.SelectedValue);
 
                 using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                 {
                     var selectedProduct = ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault();
+                    int units = Convert.ToInt32(txtUnits.Text.Trim());
 
-                    Product product = new Product()
+                    if (units <= selectedProduct.Eenheid)
                     {
-                        ProductID = selectedProduct.ProductID,
-                        Naam = selectedProduct.Naam,
-                        Inkoopprijs = selectedProduct.Inkoopprijs,
-                        Marge = selectedProduct.Marge,
-                        Eenheid = Convert.ToInt32(txtUnits.Text),
-                        BTW = selectedProduct.BTW,
-                        LeverancierID = selectedProduct.LeverancierID,
-                        CategorieID = selectedProduct.CategorieID
-                    };
+                        decimal productPrijs = Convert.ToDecimal(selectedProduct.Inkoopprijs) + Convert.ToDecimal(selectedProduct.Marge);
+                        Product product = new Product()
+                        {
+                            ProductID = selectedProduct.ProductID,
+                            Naam = selectedProduct.Naam + " (Prijs: " + productPrijs + ")",
+                            Inkoopprijs = selectedProduct.Inkoopprijs,
+                            Marge = selectedProduct.Marge,
+                            Eenheid = Convert.ToInt32(txtUnits.Text),
+                            BTW = selectedProduct.BTW,
+                            LeverancierID = selectedProduct.LeverancierID,
+                            CategorieID = selectedProduct.CategorieID
+                        };
 
-                    KlantProductLijst.Add(product);
+                        KlantProductLijst.Add(product);
+                    }
+                    else
+                    {
+                        MessageBox.Show("De beschikbare voorraad is " + selectedProduct.Eenheid + ", Geef een getal kleiner dan of gelijk aan de beschikbaarheid");
+                    }
                 }
-                
+
                 lbKaart.DataSource = null;
                 lbKaart.DisplayMember = "Naam";
                 lbKaart.ValueMember = "ProductID";
                 lbKaart.DataSource = KlantProductLijst;
+
+                CalculateTotaalPrijs();
             }
         }
 
@@ -177,16 +187,6 @@ namespace TussentijdsProject
             else
             {
                 epKlant.Clear();
-            }
-
-            if (cbCategorie.SelectedIndex < 0)
-            {
-                epCategorie.SetError(cbCategorie, "Categorie is niet geselecteerd");
-                errorMessage += "\r\n" + "Categorie is niet geselecteerd";
-            }
-            else
-            {
-                epCategorie.Clear();
             }
 
             if (lbProduct.SelectedItems.Count <= 0)
@@ -229,10 +229,74 @@ namespace TussentijdsProject
                 lbKaart.DisplayMember = "Naam";
                 lbKaart.ValueMember = "ProductID";
                 lbKaart.DataSource = KlantProductLijst;
+                CalculateTotaalPrijs();
             }
         }
 
         private void btnAfrekenen_Click(object sender, EventArgs e)
+        {
+            if (KlantProductLijst.Count > 0)
+            {
+                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                {
+                    //Inserting rows into Bestellings table
+                    ctx.Bestellings.Add(new Bestelling()
+                    {
+                        DatumOpgemaakt = DateTime.Now,
+                        PersoneelslidID = Convert.ToInt32(cbPersoneelsLid.SelectedValue),
+                        KlantID = Convert.ToInt32(cbKlant.SelectedValue)
+                    });
+                    ctx.SaveChanges();
+
+                    
+                    int bestellingId = ctx.Bestellings.Max(x => x.BestellingID);
+                    foreach (var item in KlantProductLijst)
+                    {
+                        //Inserting rows into BestellingProducts table
+                        ctx.BestellingProducts.Add(new BestellingProduct()
+                        {
+                            BestellingID = bestellingId,
+                            ProductID = item.ProductID
+                        });
+                        ctx.SaveChanges();
+
+                        //Updating Products table
+                        ctx.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault().Eenheid -= item.Eenheid;
+                        ctx.SaveChanges();
+                    }
+                }                
+                MessageBox.Show("Uw bestelling is succesvol afrekend");
+
+                cbPersoneelsLid.SelectedIndex = -1;
+                cbKlant.SelectedIndex = -1;
+                cbCategorie.SelectedIndex = -1;
+                KlantProductLijst.Clear();
+                lbKaart.DataSource = null;
+                txtUnits.Clear();
+                txtTotaalPrijs.Clear();
+                DisplayProduct();
+            }
+            else
+            {
+                MessageBox.Show("Winkelmandje is leeg.");
+            }
+        }
+
+        public void CalculateTotaalPrijs()
+        {
+            decimal totaal = 0;
+            if (KlantProductLijst.Count > 0)
+            {                
+                foreach (var item in KlantProductLijst)
+                {
+                    decimal prijs = Convert.ToDecimal(item.Inkoopprijs) + Convert.ToDecimal(item.Marge);
+                    totaal += prijs * Convert.ToInt32(item.Eenheid);
+                }                
+            }
+            txtTotaalPrijs.Text = totaal.ToString();
+        }
+
+        private void btnOpslaan_Click(object sender, EventArgs e)
         {
 
         }
