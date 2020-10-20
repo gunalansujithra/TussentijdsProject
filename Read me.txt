@@ -35,6 +35,11 @@
 -----------
 1.Bestelling Klant - WIP
 
+20/10/2020
+-----------
+1.Bestelling Klant - functionality finished (Print to word document yet to start)
+2.Bestelling Leverancier - functionality finished (Print to word document yet to start)
+
 
 
 
