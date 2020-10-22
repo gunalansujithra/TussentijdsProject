@@ -40,6 +40,12 @@
 1.Bestelling Klant - functionality finished (Print to word document yet to start)
 2.Bestelling Leverancier - functionality finished (Print to word document yet to start)
 
+22/10/2020
+-----------
+1.Overzicht: Stocks completed
+2.Template to update Product table - WIP
+3.Print to word document - WIP
+
 
 
 
