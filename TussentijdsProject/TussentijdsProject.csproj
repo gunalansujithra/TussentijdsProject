@@ -39,6 +39,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\..\..\..\..\Windows\assembly\GAC_MSIL\Microsoft.Office.Interop.Word\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Word.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -53,6 +58,12 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xceed.Document.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.7.1\lib\net40\Xceed.Document.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Words.NET, Version=1.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\DocX.1.7.1\lib\net40\Xceed.Words.NET.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bestelling.cs">
@@ -138,6 +149,18 @@
     </Compile>
     <Compile Include="InloggenScreen.Designer.cs">
       <DependentUpon>InloggenScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManageStocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageStocks.Designer.cs">
+      <DependentUpon>ManageStocks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductTemplate.Designer.cs">
+      <DependentUpon>ProductTemplate.cs</DependentUpon>
     </Compile>
     <Compile Include="SaveInloggen.cs">
       <SubType>Form</SubType>
@@ -233,6 +256,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageInloggen.resx">
       <DependentUpon>ManageInloggen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageStocks.resx">
+      <DependentUpon>ManageStocks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductTemplate.resx">
+      <DependentUpon>ProductTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SaveInloggen.resx">
       <DependentUpon>SaveInloggen.cs</DependentUpon>

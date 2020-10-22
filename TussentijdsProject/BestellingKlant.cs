@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Word = Microsoft.Office.Interop.Word;
+using Xceed.Words.NET;
+using System.Xml;
+using Xceed.Document.NET;
+using Microsoft.Office.Interop.Word;
 
 namespace TussentijdsProject
 {
@@ -267,14 +272,14 @@ namespace TussentijdsProject
                 }                
                 MessageBox.Show("Uw bestelling is succesvol afrekend");
 
-                cbPersoneelsLid.SelectedIndex = -1;
-                cbKlant.SelectedIndex = -1;
-                cbCategorie.SelectedIndex = -1;
-                KlantProductLijst.Clear();
-                lbKaart.DataSource = null;
-                txtUnits.Clear();
-                txtTotaalPrijs.Clear();
-                DisplayProduct();
+                //cbPersoneelsLid.SelectedIndex = -1;
+                //cbKlant.SelectedIndex = -1;
+                //cbCategorie.SelectedIndex = -1;
+                //KlantProductLijst.Clear();
+                //lbKaart.DataSource = null;
+                //txtUnits.Clear();
+                //txtTotaalPrijs.Clear();
+                //DisplayProduct();
             }
             else
             {
@@ -298,7 +303,144 @@ namespace TussentijdsProject
 
         private void btnOpslaan_Click(object sender, EventArgs e)
         {
+            Word.Application objWord = new Word.Application();
+            objWord.Visible = true;
+            objWord.WindowState = Word.WdWindowState.wdWindowStateNormal;
 
+            Word.Document objDoc = objWord.Documents.Add();
+
+            Word.Paragraph objPara;
+            objPara = objDoc.Paragraphs.Add();
+            objPara.Format.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+
+            objPara.Range.Text = "Bestellingen\nDat betaal ik zelf wel.";
+
+            using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+            {
+                var klant = ctx.Klants.Where(x => x.KlantID == (int)cbKlant.SelectedValue).FirstOrDefault();
+                Word.Paragraph klantPara;
+                klantPara = objDoc.Paragraphs.Add();
+                klantPara.Format.Alignment = Word.WdParagraphAlignment.wdAlignParagraphLeft;
+                klantPara.Format.LineSpacing = 1;
+
+
+                klantPara.Range.Text = klant.Voornaam + " " + klant.Achternaam + "\n" + klant.Straatnaam + " " + klant.Huisnummer
+                                        + "Bus " + klant.Bus + "\n" + klant.Postcode + " " + klant.Gemeente;
+
+
+                Word.Paragraph headerPara;
+                headerPara = objDoc.Paragraphs.Add();
+                headerPara.Format.Alignment = Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                headerPara.Format.LineSpacing = 1;
+
+                headerPara.Range.Text = "Artikel\t\t\t\t Aantal\tPrij per stuk\tBTW\tPrijs incl. BTW";
+
+                //object oEndOfDoc = "\\endofdoc";
+                //Word.Table klantTable;
+                //Word.Range wrdRng = objDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                //object oMissing = System.Reflection.Missing.Value;
+                //klantTable = objDoc.Tables.Add(wrdRng, 2, 5, ref oMissing, ref oMissing);
+
+                //klantTable.Rows[0].Cells[0]
+
+                //SendMessage("Opening Word");
+
+                //Word.Application word = null;
+
+
+
+                //Word.Document doc = null;
+                //object oMissing = System.Reflection.Missing.Value;
+                //object oEndOfDoc = "\\endofdoc"; /* \endofdoc is a predefined bookmark */
+                //try
+                //{
+                //    word = new word.ApplicationClass();
+                //    word.Visible = true;
+                //    doc = word.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+                //}
+                //catch (Exception ex)
+                //{
+                //    ErrorLog(ex);
+                //}
+                //finally
+                //{
+                //}
+                //if (word != null && doc != null)
+                //{
+                //    word.Table newTable;
+                //    word.Range wrdRng = doc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+                //    newTable = doc.Tables.Add(wrdRng, 1, dgv.Columns.Count - 1, ref oMissing, ref oMissing);
+                //    newTable.Borders.InsideLineStyle = Microsoft.Office.Interop.Word.WdLineStyle.wdLineStyleSingle;
+                //    newTable.Borders.OutsideLineStyle = Microsoft.Office.Interop.Word.WdLineStyle.wdLineStyleSingle;
+                //    newTable.AllowAutoFit = true;
+
+                //    foreach (DataGridViewCell cell in dgv.Rows[0].Cells)
+                //    {
+                //        newTable.Cell(newTable.Rows.Count, cell.ColumnIndex).Range.Text = dgv.Columns[cell.ColumnIndex].Name;
+
+                //    }
+                //    newTable.Rows.Add();
+
+                //    foreach (DataGridViewRow row in dgv.Rows)
+                //    {
+                //        foreach (DataGridViewCell cell in row.Cells)
+                //        {
+                //            newTable.Cell(newTable.Rows.Count, cell.ColumnIndex).Range.Text = cell.Value.ToString();
+                //        }
+                //        newTable.Rows.Add();
+                //    }
+                //}
+
+
+                //Word.Table producttable;
+                //producttable = objDoc.Tables.Add(producttable, 2, 5, )
+                //producttable.Rows[0].c
+                //int bestellingId = ctx.Bestellings.Max(x => x.BestellingID);
+                //foreach (var item in KlantProductLijst)
+                //{
+                //    //Inserting rows into BestellingProducts table
+                //    ctx.BestellingProducts.Add(new BestellingProduct()
+                //    {
+                //        BestellingID = bestellingId,
+                //        ProductID = item.ProductID
+                //    });
+                //    ctx.SaveChanges();
+                //}
+
+
+                //using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                //{
+                //    //Inserting rows into Bestellings table
+                //    ctx.Bestellings.Add(new Bestelling()
+                //    {
+                //        DatumOpgemaakt = DateTime.Now,
+                //        PersoneelslidID = Convert.ToInt32(cbPersoneelsLid.SelectedValue),
+                //        KlantID = Convert.ToInt32(cbKlant.SelectedValue)
+                //    });
+                //    ctx.SaveChanges();
+
+
+                //    int bestellingId = ctx.Bestellings.Max(x => x.BestellingID);
+                //    foreach (var item in KlantProductLijst)
+                //    {
+                //        //Inserting rows into BestellingProducts table
+                //        ctx.BestellingProducts.Add(new BestellingProduct()
+                //        {
+                //            BestellingID = bestellingId,
+                //            ProductID = item.ProductID
+                //        });
+                //        ctx.SaveChanges();
+
+                //        //Updating Products table
+                //        ctx.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault().Eenheid -= item.Eenheid;
+                //        ctx.SaveChanges();
+                //    }
+                //}
+
+                objDoc.SaveAs2("C:\\Users\\Krëfel\\source\\repos\\TussentijdsProject\\TussentijdsProject\\bin\\Debug\\Suji.docx");
+                objDoc.Close();
+                objWord.Quit();
+            }
         }
     }
 }

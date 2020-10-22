@@ -41,6 +41,7 @@
             this.leverancierToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.klantToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDisplay = new System.Windows.Forms.Panel();
+            this.stockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -115,6 +116,8 @@
             // 
             // overzichtToolStripMenuItem
             // 
+            this.overzichtToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.stockToolStripMenuItem});
             this.overzichtToolStripMenuItem.Name = "overzichtToolStripMenuItem";
             this.overzichtToolStripMenuItem.Size = new System.Drawing.Size(159, 38);
             this.overzichtToolStripMenuItem.Text = "Overzicht";
@@ -148,6 +151,13 @@
             this.pnlDisplay.Name = "pnlDisplay";
             this.pnlDisplay.Size = new System.Drawing.Size(990, 757);
             this.pnlDisplay.TabIndex = 1;
+            // 
+            // stockToolStripMenuItem
+            // 
+            this.stockToolStripMenuItem.Name = "stockToolStripMenuItem";
+            this.stockToolStripMenuItem.Size = new System.Drawing.Size(224, 38);
+            this.stockToolStripMenuItem.Text = "Stock";
+            this.stockToolStripMenuItem.Click += new System.EventHandler(this.stockToolStripMenuItem_Click);
             // 
             // MainMenu
             // 
@@ -185,5 +195,6 @@
         private System.Windows.Forms.ToolStripMenuItem leverancierToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem klantToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem usernaamToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem stockToolStripMenuItem;
     }
 }

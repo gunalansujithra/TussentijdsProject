@@ -89,5 +89,14 @@ namespace TussentijdsProject
             pnlDisplay.Controls.Add(bestellingKlant);
             bestellingKlant.Show();
         }
+
+        private void stockToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ManageStocks manageStocks = new ManageStocks();
+            manageStocks.TopLevel = false;
+            pnlDisplay.Controls.Clear();
+            pnlDisplay.Controls.Add(manageStocks);
+            manageStocks.Show();
+        }
     }
 }
