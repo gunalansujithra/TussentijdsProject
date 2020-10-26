@@ -29,6 +29,7 @@ namespace TussentijdsProject
                 txtInkoopprijs.Clear();
                 txtMarge.Clear();
                 txtEenheid.Clear();
+                txtAantal.Clear();
                 txtBtw.Clear();
                 cbLeverancier.SelectedIndex = -1;
                 cbCategorie.SelectedIndex = -1;
@@ -46,7 +47,8 @@ namespace TussentijdsProject
                         txtNaam.Text = selectedProduct.Naam;
                         txtInkoopprijs.Text = selectedProduct.Inkoopprijs.ToString();
                         txtMarge.Text = selectedProduct.Marge.ToString();
-                        txtEenheid.Text = selectedProduct.Eenheid.ToString();
+                        txtAantal.Text = selectedProduct.Aantal.ToString();
+                        txtEenheid.Text = selectedProduct.Eenheid;
                         txtBtw.Text = selectedProduct.BTW.ToString();
                         cbLeverancier.SelectedValue = selectedProduct.LeverancierID;
                         cbCategorie.SelectedValue = selectedProduct.CategorieID;
@@ -120,6 +122,16 @@ namespace TussentijdsProject
                 epMarge.Clear();
             }
 
+            if (txtAantal.Text.Trim().Length == 0)
+            {
+                epAantal.SetError(txtAantal, "Aantal is niet ingevuld");
+                errorMessage += "\r\n" + "Aantal is niet ingevuld";
+            }
+            else
+            {
+                epAantal.Clear();
+            }
+
             if (txtEenheid.Text.Trim().Length == 0)
             {
                 epEenheid.SetError(txtEenheid, "Eenheid is niet ingevuld");
@@ -165,7 +177,7 @@ namespace TussentijdsProject
                 MessageBox.Show(errorMessage);
             }
         }
-
+          
         private void btnOpslaan_Click(object sender, EventArgs e)
         {
             if (ManageProduct.IsNewProduct)
@@ -174,7 +186,7 @@ namespace TussentijdsProject
 
                 if (txtNaam.Text.Trim().Length > 0 && txtInkoopprijs.Text.Trim().Length > 0 && txtMarge.Text.Trim().Length > 0
                         && txtEenheid.Text.Trim().Length > 0 && txtBtw.Text.Trim().Length > 0 && cbLeverancier.SelectedIndex >= 0
-                        && cbCategorie.SelectedIndex >= 0)
+                        && txtAantal.Text.Trim().Length > 0 && cbCategorie.SelectedIndex >= 0)
                 {
                     string product = txtNaam.Text;
                     using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
@@ -184,7 +196,8 @@ namespace TussentijdsProject
                             Naam = txtNaam.Text.Trim(),
                             Inkoopprijs = Convert.ToDecimal(txtInkoopprijs.Text.Trim()),
                             Marge = Convert.ToDecimal(txtMarge.Text.Trim()),
-                            Eenheid = Convert.ToInt32(txtEenheid.Text.Trim()),
+                            Aantal = Convert.ToDecimal(txtMarge.Text.Trim()),
+                            Eenheid = txtEenheid.Text.Trim(),
                             BTW = Convert.ToInt32(txtBtw.Text.Trim()),
                             LeverancierID = (int)cbLeverancier.SelectedValue,
                             CategorieID = (int)cbCategorie.SelectedValue
@@ -195,6 +208,7 @@ namespace TussentijdsProject
                     txtNaam.Clear();
                     txtInkoopprijs.Clear();
                     txtMarge.Clear();
+                    txtAantal.Clear();
                     txtEenheid.Clear();
                     txtBtw.Clear();
                     cbLeverancier.SelectedIndex = -1;
@@ -209,7 +223,7 @@ namespace TussentijdsProject
                 int productId = ManageProduct.ProductId;
                 if (txtNaam.Text.Trim().Length > 0 && txtInkoopprijs.Text.Trim().Length > 0 && txtMarge.Text.Trim().Length > 0
                         && txtEenheid.Text.Trim().Length > 0 && txtBtw.Text.Trim().Length > 0 && cbLeverancier.SelectedIndex >= 0
-                        && cbCategorie.SelectedIndex >= 0)
+                        && txtAantal.Text.Trim().Length > 0 && cbCategorie.SelectedIndex >= 0)
                 {
                     string product = txtNaam.Text;
                     using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
@@ -217,7 +231,8 @@ namespace TussentijdsProject
                         ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Naam = txtNaam.Text.Trim();
                         ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Inkoopprijs = Convert.ToDecimal(txtInkoopprijs.Text.Trim());
                         ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Marge = Convert.ToDecimal(txtMarge.Text.Trim());
-                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Eenheid = Convert.ToInt32(txtEenheid.Text.Trim());
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Aantal = Convert.ToDecimal(txtAantal.Text.Trim());
+                        ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().Eenheid = txtEenheid.Text.Trim();
                         ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().BTW = Convert.ToInt32(txtBtw.Text.Trim());
                         ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().LeverancierID = (int)cbLeverancier.SelectedValue;
                         ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault().CategorieID = (int)cbCategorie.SelectedValue;

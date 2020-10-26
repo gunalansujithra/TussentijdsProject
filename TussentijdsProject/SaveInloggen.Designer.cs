@@ -49,11 +49,11 @@
             // lblWachtwoord
             // 
             this.lblWachtwoord.AutoSize = true;
-            this.lblWachtwoord.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblWachtwoord.Location = new System.Drawing.Point(124, 214);
+            this.lblWachtwoord.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWachtwoord.Location = new System.Drawing.Point(153, 218);
             this.lblWachtwoord.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblWachtwoord.Name = "lblWachtwoord";
-            this.lblWachtwoord.Size = new System.Drawing.Size(133, 23);
+            this.lblWachtwoord.Size = new System.Drawing.Size(127, 23);
             this.lblWachtwoord.TabIndex = 10;
             this.lblWachtwoord.Text = "Wachtwoord";
             // 
@@ -78,11 +78,11 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsername.Location = new System.Drawing.Point(124, 145);
+            this.lblUsername.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(153, 149);
             this.lblUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUsername.Name = "lblUsername";
-            this.lblUsername.Size = new System.Drawing.Size(108, 23);
+            this.lblUsername.Size = new System.Drawing.Size(103, 23);
             this.lblUsername.TabIndex = 7;
             this.lblUsername.Text = "Username";
             // 
@@ -101,11 +101,11 @@
             // lblGebruiker
             // 
             this.lblGebruiker.AutoSize = true;
-            this.lblGebruiker.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGebruiker.Location = new System.Drawing.Point(124, 75);
+            this.lblGebruiker.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGebruiker.Location = new System.Drawing.Point(153, 79);
             this.lblGebruiker.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGebruiker.Name = "lblGebruiker";
-            this.lblGebruiker.Size = new System.Drawing.Size(106, 23);
+            this.lblGebruiker.Size = new System.Drawing.Size(101, 23);
             this.lblGebruiker.TabIndex = 16;
             this.lblGebruiker.Text = "Gubruiker";
             // 

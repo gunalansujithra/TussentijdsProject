@@ -138,7 +138,7 @@ namespace TussentijdsProject
                     var selectedProduct = ctx.Products.Where(x => x.ProductID == productId).FirstOrDefault();
                     int units = Convert.ToInt32(txtUnits.Text.Trim());
 
-                    if (units <= selectedProduct.Eenheid)
+                    if (units <= selectedProduct.Aantal)
                     {
                         decimal productPrijs = Convert.ToDecimal(selectedProduct.Inkoopprijs) + Convert.ToDecimal(selectedProduct.Marge);
                         Product product = new Product()
@@ -147,7 +147,8 @@ namespace TussentijdsProject
                             Naam = selectedProduct.Naam + " (Prijs: " + productPrijs + ")",
                             Inkoopprijs = selectedProduct.Inkoopprijs,
                             Marge = selectedProduct.Marge,
-                            Eenheid = Convert.ToInt32(txtUnits.Text),
+                            Aantal = Convert.ToInt32(txtUnits.Text),
+                            Eenheid = selectedProduct.Eenheid,
                             BTW = selectedProduct.BTW,
                             LeverancierID = selectedProduct.LeverancierID,
                             CategorieID = selectedProduct.CategorieID
@@ -157,7 +158,7 @@ namespace TussentijdsProject
                     }
                     else
                     {
-                        MessageBox.Show("De beschikbare voorraad is " + selectedProduct.Eenheid + ", Geef een getal kleiner dan of gelijk aan de beschikbaarheid");
+                        MessageBox.Show("De beschikbare voorraad is " + selectedProduct.Aantal + ", Geef een getal kleiner dan of gelijk aan de beschikbaarheid");
                     }
                 }
 
@@ -266,7 +267,7 @@ namespace TussentijdsProject
                         ctx.SaveChanges();
 
                         //Updating Products table
-                        ctx.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault().Eenheid -= item.Eenheid;
+                        ctx.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault().Aantal -= item.Aantal;
                         ctx.SaveChanges();
                     }
                 }                
@@ -295,7 +296,7 @@ namespace TussentijdsProject
                 foreach (var item in KlantProductLijst)
                 {
                     decimal prijs = Convert.ToDecimal(item.Inkoopprijs) + Convert.ToDecimal(item.Marge);
-                    totaal += prijs * Convert.ToInt32(item.Eenheid);
+                    totaal += prijs * Convert.ToInt32(item.Aantal);
                 }                
             }
             txtTotaalPrijs.Text = totaal.ToString();

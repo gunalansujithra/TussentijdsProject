@@ -24,10 +24,11 @@ namespace TussentijdsProject
         public string Naam { get; set; }
         public Nullable<decimal> Inkoopprijs { get; set; }
         public Nullable<decimal> Marge { get; set; }
-        public Nullable<int> Eenheid { get; set; }
+        public string Eenheid { get; set; }
         public Nullable<int> BTW { get; set; }
         public Nullable<int> LeverancierID { get; set; }
         public Nullable<int> CategorieID { get; set; }
+        public Nullable<decimal> Aantal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BestellingProduct> BestellingProducts { get; set; }

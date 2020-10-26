@@ -45,6 +45,7 @@ namespace TussentijdsProject
                     txtNaam.Text = "";
                     txtInkoopprijs.Text = "";
                     txtMarge.Text = "";
+                    txtAantal.Text = "";
                     txtEenheid.Text = "";
                     txtBtw.Text = "";
                     txtLeverancier.Text = "";
@@ -124,7 +125,8 @@ namespace TussentijdsProject
                         txtNaam.Text = selectedProduct.p1.p.Naam;
                         txtInkoopprijs.Text = selectedProduct.p1.p.Inkoopprijs.ToString();
                         txtMarge.Text = selectedProduct.p1.p.Marge.ToString();
-                        txtEenheid.Text = selectedProduct.p1.p.Eenheid.ToString();
+                        txtAantal.Text = selectedProduct.p1.p.Aantal.ToString();
+                        txtEenheid.Text = selectedProduct.p1.p.Eenheid;
                         txtBtw.Text = selectedProduct.p1.p.BTW.ToString();
                         txtLeverancier.Text = selectedProduct.p1.l.Contactpersoon;
                         txtCategorie.Text = selectedProduct.c.CategorieNaam;

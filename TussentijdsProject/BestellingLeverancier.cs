@@ -60,7 +60,8 @@ namespace TussentijdsProject
                         Naam = selectedProduct.Naam + " (Prijs: " + productPrijs + ")",
                         Inkoopprijs = selectedProduct.Inkoopprijs,
                         Marge = selectedProduct.Marge,
-                        Eenheid = Convert.ToInt32(txtUnits.Text),
+                        Aantal = Convert.ToInt32(txtUnits.Text),
+                        Eenheid = selectedProduct.Eenheid,
                         BTW = selectedProduct.BTW,
                         LeverancierID = selectedProduct.LeverancierID,
                         CategorieID = selectedProduct.CategorieID
@@ -130,7 +131,7 @@ namespace TussentijdsProject
                         ctx.SaveChanges();
 
                         //Updating Products table
-                        ctx.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault().Eenheid += item.Eenheid;
+                        ctx.Products.Where(x => x.ProductID == item.ProductID).FirstOrDefault().Aantal += item.Aantal;
                         ctx.SaveChanges();
                     }
                 }
@@ -281,10 +282,12 @@ namespace TussentijdsProject
                 foreach (var item in LeverancierProductLijst)
                 {
                     decimal prijs = Convert.ToDecimal(item.Inkoopprijs) + Convert.ToDecimal(item.Marge);
-                    totaal += prijs * Convert.ToInt32(item.Eenheid);
+                    totaal += prijs * Convert.ToInt32(item.Aantal);
                 }
             }
             txtTotaalPrijs.Text = totaal.ToString();
         }
+
+        
     }
 }

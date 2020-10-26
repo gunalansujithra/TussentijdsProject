@@ -156,6 +156,18 @@
     <Compile Include="ManageStocks.Designer.cs">
       <DependentUpon>ManageStocks.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderExistingProductTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderExistingProductTemplate.Designer.cs">
+      <DependentUpon>OrderExistingProductTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personeelslid.cs">
+      <DependentUpon>BestellingenDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>BestellingenDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="ProductTemplate.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,12 +197,6 @@
     </Compile>
     <Compile Include="ManageProduct.Designer.cs">
       <DependentUpon>ManageProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Personeelslid.cs">
-      <DependentUpon>BestellingenDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Product.cs">
-      <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

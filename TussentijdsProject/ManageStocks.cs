@@ -60,9 +60,9 @@ namespace TussentijdsProject
                 {
                     var productLijst = ctx.Products.Select(x => new
                     {
-                        Naam = x.Naam + " (In Stock: " + x.Eenheid + ")",
+                        Naam = x.Naam + " (In Stock: " + x.Aantal + ")",
                         Id = x.ProductID,
-                        Eenheid = x.Eenheid,
+                        Aantal = x.Aantal,
                         CategorieID = x.CategorieID
                     }).ToList();
 
@@ -71,27 +71,27 @@ namespace TussentijdsProject
                     switch (cbRange.SelectedItem.ToString())
                     {
                         case "Minder dan 10":
-                            productLijst = productLijst.Where(x => x.Eenheid <= 10).ToList();
+                            productLijst = productLijst.Where(x => x.Aantal <= 10).ToList();
                             break;
 
                         case "Tussen 11 tot 50":
-                            productLijst = productLijst.Where(x => x.Eenheid > 10 && x.Eenheid <= 50).ToList();
+                            productLijst = productLijst.Where(x => x.Aantal > 10 && x.Aantal <= 50).ToList();
                             break;
 
                         case "Tussen 51 tot 100":
-                            productLijst = productLijst.Where(x => x.Eenheid > 50 && x.Eenheid <= 100).ToList();
+                            productLijst = productLijst.Where(x => x.Aantal > 50 && x.Aantal <= 100).ToList();
                             break;
 
                         case "Tussen 101 tot 500":
-                            productLijst = productLijst.Where(x => x.Eenheid > 100 && x.Eenheid <= 500).ToList();
+                            productLijst = productLijst.Where(x => x.Aantal > 100 && x.Aantal <= 500).ToList();
                             break;
 
                         case "Tussen 501 tot 1000":
-                            productLijst = productLijst.Where(x => x.Eenheid > 500 && x.Eenheid <= 1000).ToList();
+                            productLijst = productLijst.Where(x => x.Aantal > 500 && x.Aantal <= 1000).ToList();
                             break;
 
                         case "Meer dan 1000":
-                            productLijst = productLijst.Where(x => x.Eenheid > 1000).ToList();
+                            productLijst = productLijst.Where(x => x.Aantal > 1000).ToList();
                             break;
 
                         default:
@@ -118,7 +118,7 @@ namespace TussentijdsProject
                 //code for Product
                 var productLijst = ctx.Products.Select(x => new
                 {
-                    Naam = x.Naam + " (In Stock: " + x.Eenheid + ")",
+                    Naam = x.Naam + " (In Stock: " + x.Aantal + ")",
                     Id = x.ProductID
                 }).ToList();
                 lbProduct.DisplayMember = "Naam";

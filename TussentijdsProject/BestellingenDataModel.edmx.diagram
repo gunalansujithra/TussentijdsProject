@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76cf1bdf2c414c8eb61d39e9bfaa3a1d" Name="Diagram1">
+      <Diagram DiagramId="027b9bb3e9604d59bd5d3182ec3f8edc" Name="Diagram1">
         <EntityTypeShape EntityType="BestellingenDatabaseModel.Bestelling" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BestellingenDatabaseModel.BestellingProduct" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.BestellingProduct" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BestellingenDatabaseModel.Categorie" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BestellingenDatabaseModel.Gebruiker" Width="1.5" PointX="2.75" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BestellingenDatabaseModel.InLoggen" Width="1.5" PointX="5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Gebruiker" Width="1.5" PointX="2.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.InLoggen" Width="1.5" PointX="5" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="BestellingenDatabaseModel.Klant" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BestellingenDatabaseModel.Leverancier" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BestellingenDatabaseModel.Personeelslid" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
-        <EntityTypeShape EntityType="BestellingenDatabaseModel.Product" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BestellingenDatabaseModel.Product" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
         <AssociationConnector Association="BestellingenDatabaseModel.FK_Bestelling_Klant" ManuallyRouted="false" />
         <AssociationConnector Association="BestellingenDatabaseModel.FK_Bestelling_Leverancier" ManuallyRouted="false" />
         <AssociationConnector Association="BestellingenDatabaseModel.FK_Bestelling_Personeelslid" ManuallyRouted="false" />

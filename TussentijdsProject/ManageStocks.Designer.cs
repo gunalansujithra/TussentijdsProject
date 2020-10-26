@@ -42,7 +42,7 @@
             this.lbProduct.FormattingEnabled = true;
             this.lbProduct.ItemHeight = 21;
             this.lbProduct.Location = new System.Drawing.Point(348, 220);
-            this.lbProduct.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lbProduct.Margin = new System.Windows.Forms.Padding(4);
             this.lbProduct.Name = "lbProduct";
             this.lbProduct.Size = new System.Drawing.Size(346, 193);
             this.lbProduct.TabIndex = 54;
@@ -50,22 +50,22 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(95, 220);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(150, 23);
+            this.label1.Size = new System.Drawing.Size(143, 23);
             this.label1.TabIndex = 53;
             this.label1.Text = "Select Product";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(95, 76);
             this.label11.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(184, 25);
+            this.label11.Size = new System.Drawing.Size(188, 23);
             this.label11.TabIndex = 52;
             this.label11.Text = "Select Stock Range";
             // 
@@ -73,7 +73,7 @@
             // 
             this.cbRange.FormattingEnabled = true;
             this.cbRange.Location = new System.Drawing.Point(349, 76);
-            this.cbRange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbRange.Margin = new System.Windows.Forms.Padding(4);
             this.cbRange.Name = "cbRange";
             this.cbRange.Size = new System.Drawing.Size(345, 29);
             this.cbRange.TabIndex = 51;
@@ -83,7 +83,7 @@
             // 
             this.cbCategorie.FormattingEnabled = true;
             this.cbCategorie.Location = new System.Drawing.Point(349, 151);
-            this.cbCategorie.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCategorie.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategorie.Name = "cbCategorie";
             this.cbCategorie.Size = new System.Drawing.Size(345, 29);
             this.cbCategorie.TabIndex = 50;
@@ -92,11 +92,11 @@
             // lblCategorie
             // 
             this.lblCategorie.AutoSize = true;
-            this.lblCategorie.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategorie.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCategorie.Location = new System.Drawing.Point(96, 152);
             this.lblCategorie.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.lblCategorie.Name = "lblCategorie";
-            this.lblCategorie.Size = new System.Drawing.Size(174, 23);
+            this.lblCategorie.Size = new System.Drawing.Size(166, 23);
             this.lblCategorie.TabIndex = 49;
             this.lblCategorie.Text = "Select Categorie";
             // 
@@ -107,7 +107,7 @@
             this.btnClear.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnClear.Location = new System.Drawing.Point(415, 469);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnClear.Margin = new System.Windows.Forms.Padding(5);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(206, 66);
             this.btnClear.TabIndex = 55;
@@ -131,7 +131,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ManageStocks";
             this.Text = "ManageStocks";
             this.Load += new System.EventHandler(this.ManageStocks_Load);

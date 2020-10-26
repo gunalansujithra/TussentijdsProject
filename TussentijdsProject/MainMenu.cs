@@ -98,5 +98,14 @@ namespace TussentijdsProject
             pnlDisplay.Controls.Add(manageStocks);
             manageStocks.Show();
         }
+
+        private void productTemplateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductTemplate productTemplate = new ProductTemplate();
+            productTemplate.TopLevel = false;
+            pnlDisplay.Controls.Clear();
+            pnlDisplay.Controls.Add(productTemplate);
+            productTemplate.Show();
+        }
     }
 }
