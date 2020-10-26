@@ -47,7 +47,11 @@
 3.Print to word document - WIP
 
 
-
+26/10/2020
+-----------
+1.Template to update Product table - completed
+2.Database changes to correct Eenheid - completed
+3.Print to word document - WIP
 
 
 
