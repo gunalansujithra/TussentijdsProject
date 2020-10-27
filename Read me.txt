@@ -53,6 +53,11 @@
 2.Database changes to correct Eenheid - completed
 3.Print to word document - WIP
 
+27/10/2020
+-----------
+1.Menu display based on user roles = completed
+2.Print to word document - WIP
+
 
 
 

@@ -117,8 +117,20 @@
     <Compile Include="Klant.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="KlantMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KlantMenu.Designer.cs">
+      <DependentUpon>KlantMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Leverancier.cs">
       <DependentUpon>BestellingenDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LeverancierMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LeverancierMenu.Designer.cs">
+      <DependentUpon>LeverancierMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.cs">
       <SubType>Form</SubType>
@@ -253,6 +265,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="InloggenScreen.resx">
       <DependentUpon>InloggenScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="KlantMenu.resx">
+      <DependentUpon>KlantMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LeverancierMenu.resx">
+      <DependentUpon>LeverancierMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenu.resx">
       <DependentUpon>MainMenu.cs</DependentUpon>

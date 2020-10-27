@@ -107,5 +107,6 @@ namespace TussentijdsProject
             pnlDisplay.Controls.Add(productTemplate);
             productTemplate.Show();
         }
+
     }
 }

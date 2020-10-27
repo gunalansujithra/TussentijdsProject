@@ -35,9 +35,25 @@ namespace TussentijdsProject
 
                     if (usersDetails != null && usersDetails.Username.ToLower() == gebruiker.ToLower() && usersDetails.Wachtwoord == encrypWW)
                     {
-                        MainMenu mainMenu = new MainMenu();
-                        this.Hide();
-                        mainMenu.Show();
+                        if (usersDetails.GebruikerId == 1)
+                        {
+                            MainMenu mainMenu = new MainMenu();
+                            this.Hide();
+                            mainMenu.Show();
+                        }
+                        else if (usersDetails.GebruikerId == 2)
+                        {
+                            LeverancierMenu leverancierMenu = new LeverancierMenu();
+                            this.Hide();
+                            leverancierMenu.Show();
+                        }
+                        else if (usersDetails.GebruikerId == 3)
+                        {
+                            KlantMenu klantMenu = new KlantMenu();
+                            this.Hide();
+                            klantMenu.Show();
+                        }
+
                     }
                     else
                     {
