@@ -58,6 +58,9 @@
 1.Menu display based on user roles = completed
 2.Print to word document - WIP
 
+29/10/2020
+-----------
+1.Print to word document - completed
 
 
 

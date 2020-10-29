@@ -22,48 +22,69 @@ namespace TussentijdsProject
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            IsNewKlant = true;
-            SaveKlant saveKlant = new SaveKlant();
-            if (saveKlant.ShowDialog() == DialogResult.OK)
+            try
             {
-                DisplayKlants();
-            }
-        }
-
-        private void btnBewerken_Click(object sender, EventArgs e)
-        {
-            if (cbKlant.SelectedIndex >= 0)
-            {
-                IsNewKlant = false;
-                KlantId = (int)cbKlant.SelectedValue;
+                IsNewKlant = true;
                 SaveKlant saveKlant = new SaveKlant();
                 if (saveKlant.ShowDialog() == DialogResult.OK)
                 {
                     DisplayKlants();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een klant om te bewerken");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBewerken_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbKlant.SelectedIndex >= 0)
+                {
+                    IsNewKlant = false;
+                    KlantId = (int)cbKlant.SelectedValue;
+                    SaveKlant saveKlant = new SaveKlant();
+                    if (saveKlant.ShowDialog() == DialogResult.OK)
+                    {
+                        DisplayKlants();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een klant om te bewerken");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
-            if (cbKlant.SelectedIndex >= 0)
+            try
             {
-                string klant = cbKlant.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbKlant.SelectedIndex >= 0)
                 {
-                    ctx.Klants.RemoveRange(ctx.Klants.Where(x => x.KlantID == (int)cbKlant.SelectedValue));
-                    ctx.SaveChanges();
+                    string klant = cbKlant.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Klants.RemoveRange(ctx.Klants.Where(x => x.KlantID == (int)cbKlant.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(klant + " is succesvol verwijderd");
+                    DisplayKlants();
                 }
-                MessageBox.Show(klant + " is succesvol verwijderd");
-                DisplayKlants();
+                else
+                {
+                    MessageBox.Show("Selecteer een klant om te verwijderen");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een klant om te verwijderen");
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -100,34 +121,48 @@ namespace TussentijdsProject
 
         private void ManageKlant_Load(object sender, EventArgs e)
         {
-            DisplayKlants();
+            try
+            {
+                DisplayKlants();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cbKlant_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbKlant.SelectedIndex >= 0)
+            try
             {
-                int klantId = Convert.ToInt32(cbKlant.SelectedValue);
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbKlant.SelectedIndex >= 0)
                 {
-                    var selectedklant = ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault();
+                    int klantId = Convert.ToInt32(cbKlant.SelectedValue);
 
-                    if (selectedklant != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtVoornaam.Text = selectedklant.Voornaam;
-                        txtAchternaam.Text = selectedklant.Achternaam;
-                        txtStraatnaam.Text = selectedklant.Straatnaam;
-                        txtHuisNummer.Text = selectedklant.Huisnummer;
-                        txtBus.Text = selectedklant.Bus;
-                        txtPostcode.Text = selectedklant.Postcode.ToString();
-                        txtGemeente.Text = selectedklant.Gemeente;
-                        txtTelefoon.Text = selectedklant.Telefoonnummer;
-                        txtEmailadres.Text = selectedklant.Emailadres;
-                        txtAangemaaktOp.Text = selectedklant.AangemaaktOp.ToString();
-                        txtOpmerking.Text = selectedklant.Opmerking;                        
+                        var selectedklant = ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault();
+
+                        if (selectedklant != null)
+                        {
+                            txtVoornaam.Text = selectedklant.Voornaam;
+                            txtAchternaam.Text = selectedklant.Achternaam;
+                            txtStraatnaam.Text = selectedklant.Straatnaam;
+                            txtHuisNummer.Text = selectedklant.Huisnummer;
+                            txtBus.Text = selectedklant.Bus;
+                            txtPostcode.Text = selectedklant.Postcode.ToString();
+                            txtGemeente.Text = selectedklant.Gemeente;
+                            txtTelefoon.Text = selectedklant.Telefoonnummer;
+                            txtEmailadres.Text = selectedklant.Emailadres;
+                            txtAangemaaktOp.Text = selectedklant.AangemaaktOp.ToString();
+                            txtOpmerking.Text = selectedklant.Opmerking;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

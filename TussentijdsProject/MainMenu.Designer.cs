@@ -56,7 +56,7 @@
             this.bestellingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1015, 42);
+            this.menuStrip1.Size = new System.Drawing.Size(1080, 42);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -166,7 +166,7 @@
             this.pnlDisplay.Location = new System.Drawing.Point(13, 59);
             this.pnlDisplay.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlDisplay.Name = "pnlDisplay";
-            this.pnlDisplay.Size = new System.Drawing.Size(990, 757);
+            this.pnlDisplay.Size = new System.Drawing.Size(1056, 800);
             this.pnlDisplay.TabIndex = 1;
             // 
             // MainMenu
@@ -174,7 +174,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1015, 810);
+            this.ClientSize = new System.Drawing.Size(1080, 871);
             this.Controls.Add(this.pnlDisplay);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

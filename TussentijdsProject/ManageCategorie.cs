@@ -22,54 +22,82 @@ namespace TussentijdsProject
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            IsNewCategorie = true;
-            SaveCategorie saveCategorie = new SaveCategorie();
-            if (saveCategorie.ShowDialog() == DialogResult.OK)
+            try
             {
-                DisplayCategorieNaam();
-            }
-        }
-
-        private void btnBewerken_Click(object sender, EventArgs e)
-        {
-            if (cbCategorie.SelectedIndex >= 0)
-            {
-                IsNewCategorie = false;
-                CategorieId = (int)cbCategorie.SelectedValue;
+                IsNewCategorie = true;
                 SaveCategorie saveCategorie = new SaveCategorie();
                 if (saveCategorie.ShowDialog() == DialogResult.OK)
                 {
                     DisplayCategorieNaam();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een categorie om te bewerken");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBewerken_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbCategorie.SelectedIndex >= 0)
+                {
+                    IsNewCategorie = false;
+                    CategorieId = (int)cbCategorie.SelectedValue;
+                    SaveCategorie saveCategorie = new SaveCategorie();
+                    if (saveCategorie.ShowDialog() == DialogResult.OK)
+                    {
+                        DisplayCategorieNaam();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een categorie om te bewerken");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
-            if (cbCategorie.SelectedIndex >= 0)
+            try
             {
-                string categorie = cbCategorie.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbCategorie.SelectedIndex >= 0)
                 {
-                    ctx.Categories.RemoveRange(ctx.Categories.Where(x => x.CategorieID == (int)cbCategorie.SelectedValue));
-                    ctx.SaveChanges();
+                    string categorie = cbCategorie.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Categories.RemoveRange(ctx.Categories.Where(x => x.CategorieID == (int)cbCategorie.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(categorie + " is succesvol verwijderd");
+                    DisplayCategorieNaam();
                 }
-                MessageBox.Show(categorie + " is succesvol verwijderd");
-                DisplayCategorieNaam();
+                else
+                {
+                    MessageBox.Show("Selecteer een categorie om te verwijderen");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een categorie om te verwijderen");
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ManageCategorie_Load(object sender, EventArgs e)
         {
-            DisplayCategorieNaam();
+            try
+            {
+                DisplayCategorieNaam();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void DisplayCategorieNaam()
@@ -95,19 +123,26 @@ namespace TussentijdsProject
 
         private void cbCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbCategorie.SelectedIndex >= 0)
+            try
             {
-                int categorieId = Convert.ToInt32(cbCategorie.SelectedValue);
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbCategorie.SelectedIndex >= 0)
                 {
-                    var selectedCategorie = ctx.Categories.Where(x => x.CategorieID == categorieId).FirstOrDefault();
+                    int categorieId = Convert.ToInt32(cbCategorie.SelectedValue);
 
-                    if (selectedCategorie != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtCategorieNaam.Text = selectedCategorie.CategorieNaam;
+                        var selectedCategorie = ctx.Categories.Where(x => x.CategorieID == categorieId).FirstOrDefault();
+
+                        if (selectedCategorie != null)
+                        {
+                            txtCategorieNaam.Text = selectedCategorie.CategorieNaam;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

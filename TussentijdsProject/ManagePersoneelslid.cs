@@ -22,54 +22,82 @@ namespace TussentijdsProject
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            IsNewPersoneelsLid = true;
-            SavePersoneelsLid savePersoneelsLid = new SavePersoneelsLid();
-            if (savePersoneelsLid.ShowDialog() == DialogResult.OK)
+            try
             {
-                DisplayPersoneelsLid();
-            }
-        }
-
-        private void btnBewerken_Click(object sender, EventArgs e)
-        {
-            if (cbPersoneelsLid.SelectedIndex >= 0)
-            {
-                IsNewPersoneelsLid = false;
-                PersoneelsLidId = (int)cbPersoneelsLid.SelectedValue;
+                IsNewPersoneelsLid = true;
                 SavePersoneelsLid savePersoneelsLid = new SavePersoneelsLid();
                 if (savePersoneelsLid.ShowDialog() == DialogResult.OK)
                 {
                     DisplayPersoneelsLid();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een personeelsLid om te bewerken");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBewerken_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbPersoneelsLid.SelectedIndex >= 0)
+                {
+                    IsNewPersoneelsLid = false;
+                    PersoneelsLidId = (int)cbPersoneelsLid.SelectedValue;
+                    SavePersoneelsLid savePersoneelsLid = new SavePersoneelsLid();
+                    if (savePersoneelsLid.ShowDialog() == DialogResult.OK)
+                    {
+                        DisplayPersoneelsLid();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een personeelsLid om te bewerken");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
-            if (cbPersoneelsLid.SelectedIndex >= 0)
+            try
             {
-                string personeelslid = cbPersoneelsLid.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbPersoneelsLid.SelectedIndex >= 0)
                 {
-                    ctx.Personeelslids.RemoveRange(ctx.Personeelslids.Where(x => x.PersoneelslidID == (int)cbPersoneelsLid.SelectedValue));
-                    ctx.SaveChanges();
+                    string personeelslid = cbPersoneelsLid.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Personeelslids.RemoveRange(ctx.Personeelslids.Where(x => x.PersoneelslidID == (int)cbPersoneelsLid.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(personeelslid + " is succesvol verwijderd");
+                    DisplayPersoneelsLid();
                 }
-                MessageBox.Show(personeelslid + " is succesvol verwijderd");
-                DisplayPersoneelsLid();
+                else
+                {
+                    MessageBox.Show("Selecteer een personeelsLid om te verwijderen");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een personeelsLid om te verwijderen");
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ManagePersoneelslid_Load(object sender, EventArgs e)
         {
-            DisplayPersoneelsLid();
+            try
+            {
+                DisplayPersoneelsLid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void DisplayPersoneelsLid()
@@ -86,7 +114,7 @@ namespace TussentijdsProject
                 cbPersoneelsLid.ValueMember = "Id";
                 cbPersoneelsLid.DataSource = personeelsLidLijst;
                 if (personeelsLidLijst.Count == 0)
-                {                    
+                {
                     cbPersoneelsLid.Text = "";
                     txtName.Clear();
                 }
@@ -95,19 +123,26 @@ namespace TussentijdsProject
 
         private void cbPersoneelsLid_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbPersoneelsLid.SelectedIndex >= 0)
+            try
             {
-                int personeelsLid = Convert.ToInt32(cbPersoneelsLid.SelectedValue);
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbPersoneelsLid.SelectedIndex >= 0)
                 {
-                    var selectedPersoneelsLid = ctx.Personeelslids.Where(x => x.PersoneelslidID == personeelsLid).FirstOrDefault();
+                    int personeelsLid = Convert.ToInt32(cbPersoneelsLid.SelectedValue);
 
-                    if (selectedPersoneelsLid != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtName.Text = selectedPersoneelsLid.Voornaam;
+                        var selectedPersoneelsLid = ctx.Personeelslids.Where(x => x.PersoneelslidID == personeelsLid).FirstOrDefault();
+
+                        if (selectedPersoneelsLid != null)
+                        {
+                            txtName.Text = selectedPersoneelsLid.Voornaam;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

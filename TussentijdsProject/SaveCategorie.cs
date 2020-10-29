@@ -19,39 +19,46 @@ namespace TussentijdsProject
 
         private void btnOpslaan_Click(object sender, EventArgs e)
         {
-            if (ManageCategorie.IsNewCategorie)
+            try
             {
-                DisplayErrorMessage();
-
-                if (txtCategorieNaam.Text.Trim().Length > 0)
+                if (ManageCategorie.IsNewCategorie)
                 {
-                    string categorie = txtCategorieNaam.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    DisplayErrorMessage();
+
+                    if (txtCategorieNaam.Text.Trim().Length > 0)
                     {
-                        ctx.Categories.Add(new Categorie() { CategorieNaam = txtCategorieNaam.Text });
-                        ctx.SaveChanges();
+                        string categorie = txtCategorieNaam.Text;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            ctx.Categories.Add(new Categorie() { CategorieNaam = txtCategorieNaam.Text });
+                            ctx.SaveChanges();
+                        }
+                        MessageBox.Show(categorie + " is succesvol toegevoegd");
+                        txtCategorieNaam.Clear();
+                        this.DialogResult = DialogResult.OK;
                     }
-                    MessageBox.Show(categorie + " is succesvol toegevoegd");
-                    txtCategorieNaam.Clear();
-                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    DisplayErrorMessage();
+
+                    if (txtCategorieNaam.Text.Trim().Length > 0)
+                    {
+                        string categorie = txtCategorieNaam.Text;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            ctx.Categories.Where(x => x.CategorieID == ManageCategorie.CategorieId).FirstOrDefault().CategorieNaam = txtCategorieNaam.Text.Trim();
+                            ctx.SaveChanges();
+                        }
+                        MessageBox.Show(categorie + " is succesvol bijgewerkt");
+                        this.DialogResult = DialogResult.OK;
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                DisplayErrorMessage();
-
-                if (txtCategorieNaam.Text.Trim().Length > 0)
-                {
-                    string categorie = txtCategorieNaam.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Categories.Where(x => x.CategorieID == ManageCategorie.CategorieId).FirstOrDefault().CategorieNaam = txtCategorieNaam.Text.Trim();
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(categorie + " is succesvol bijgewerkt");
-                    this.DialogResult = DialogResult.OK;
-                }
-            }            
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnAnnuleren_Click(object sender, EventArgs e)
@@ -80,23 +87,30 @@ namespace TussentijdsProject
 
         private void SaveCategorie_Load(object sender, EventArgs e)
         {
-            if (ManageCategorie.IsNewCategorie)
+            try
             {
-                txtCategorieNaam.Clear();
-            }
-            else
-            {
-                int categorieId = ManageCategorie.CategorieId;
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (ManageCategorie.IsNewCategorie)
                 {
-                    var selectedCategorie = ctx.Categories.Where(x => x.CategorieID == categorieId).FirstOrDefault();
+                    txtCategorieNaam.Clear();
+                }
+                else
+                {
+                    int categorieId = ManageCategorie.CategorieId;
 
-                    if (selectedCategorie != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtCategorieNaam.Text = selectedCategorie.CategorieNaam;
+                        var selectedCategorie = ctx.Categories.Where(x => x.CategorieID == categorieId).FirstOrDefault();
+
+                        if (selectedCategorie != null)
+                        {
+                            txtCategorieNaam.Text = selectedCategorie.CategorieNaam;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

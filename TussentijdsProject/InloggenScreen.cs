@@ -22,46 +22,53 @@ namespace TussentijdsProject
         public static string UserName = "";
         private void btnInloggen_Click(object sender, EventArgs e)
         {
-            DisplayErrorMessage();
-
-            if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0)
+            try
             {
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                DisplayErrorMessage();
+
+                if (txtUsername.Text.Trim().Length > 0 && txtPassword.Text.Trim().Length > 0)
                 {
-                    //code for Usernames
-                    string gebruiker = txtUsername.Text;
-                    string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
-                    var usersDetails = ctx.InLoggens.Where(x => x.Username.ToLower() == gebruiker.ToLower()).FirstOrDefault();
-
-                    if (usersDetails != null && usersDetails.Username.ToLower() == gebruiker.ToLower() && usersDetails.Wachtwoord == encrypWW)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        if (usersDetails.GebruikerId == 1)
-                        {
-                            MainMenu mainMenu = new MainMenu();
-                            this.Hide();
-                            mainMenu.Show();
-                        }
-                        else if (usersDetails.GebruikerId == 2)
-                        {
-                            LeverancierMenu leverancierMenu = new LeverancierMenu();
-                            this.Hide();
-                            leverancierMenu.Show();
-                        }
-                        else if (usersDetails.GebruikerId == 3)
-                        {
-                            KlantMenu klantMenu = new KlantMenu();
-                            this.Hide();
-                            klantMenu.Show();
-                        }
+                        //code for Usernames
+                        string gebruiker = txtUsername.Text;
+                        string encrypWW = EncryptWachtwoord(txtPassword.Text.Trim());
+                        var usersDetails = ctx.InLoggens.Where(x => x.Username.ToLower() == gebruiker.ToLower()).FirstOrDefault();
 
-                    }
-                    else
-                    {
-                        MessageBox.Show("Onjuist Username / Wachtwoord is succesvol toegevoegd");
-                        txtUsername.Clear();
-                        txtPassword.Clear();
+                        if (usersDetails != null && usersDetails.Username.ToLower() == gebruiker.ToLower() && usersDetails.Wachtwoord == encrypWW)
+                        {
+                            if (usersDetails.GebruikerId == 1)
+                            {
+                                MainMenu mainMenu = new MainMenu();
+                                this.Hide();
+                                mainMenu.Show();
+                            }
+                            else if (usersDetails.GebruikerId == 2)
+                            {
+                                LeverancierMenu leverancierMenu = new LeverancierMenu();
+                                this.Hide();
+                                leverancierMenu.Show();
+                            }
+                            else if (usersDetails.GebruikerId == 3)
+                            {
+                                KlantMenu klantMenu = new KlantMenu();
+                                this.Hide();
+                                klantMenu.Show();
+                            }
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Onjuist Username / Wachtwoord is succesvol toegevoegd");
+                            txtUsername.Clear();
+                            txtPassword.Clear();
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -106,17 +113,24 @@ namespace TussentijdsProject
             {
                 MessageBox.Show(errorMessage);
             }
-        }       
+        }
 
         private void cbWachtwoord_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbWachtwoord.Checked)
+            try
             {
-                txtPassword.UseSystemPasswordChar = false;
+                if (cbWachtwoord.Checked)
+                {
+                    txtPassword.UseSystemPasswordChar = false;
+                }
+                else
+                {
+                    txtPassword.UseSystemPasswordChar = true;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                txtPassword.UseSystemPasswordChar = true;
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -132,12 +146,19 @@ namespace TussentijdsProject
 
         private void lntWwVergeten_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            IsWachtwoordVergeten = true;
-            UserName = txtUsername.Text;
-            SaveInloggen manageInloggen = new SaveInloggen();
-            if (manageInloggen.ShowDialog() == DialogResult.OK)
+            try
             {
-                txtPassword.Clear();
+                IsWachtwoordVergeten = true;
+                UserName = txtUsername.Text;
+                SaveInloggen manageInloggen = new SaveInloggen();
+                if (manageInloggen.ShowDialog() == DialogResult.OK)
+                {
+                    txtPassword.Clear();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

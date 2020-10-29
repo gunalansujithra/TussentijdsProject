@@ -19,20 +19,34 @@ namespace TussentijdsProject
 
         private void leverancierToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            BestellingLeverancier bestellingLeverancier = new BestellingLeverancier();
-            bestellingLeverancier.TopLevel = false;
-            pnlDisplay.Controls.Clear();
-            pnlDisplay.Controls.Add(bestellingLeverancier);
-            bestellingLeverancier.Show();
+            try
+            {
+                BestellingLeverancier bestellingLeverancier = new BestellingLeverancier();
+                bestellingLeverancier.TopLevel = false;
+                pnlDisplay.Controls.Clear();
+                pnlDisplay.Controls.Add(bestellingLeverancier);
+                bestellingLeverancier.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void leverancierToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ManageLeverancier manageLeverancier = new ManageLeverancier();
-            manageLeverancier.TopLevel = false;
-            pnlDisplay.Controls.Clear();
-            pnlDisplay.Controls.Add(manageLeverancier);
-            manageLeverancier.Show();
+            try
+            {
+                ManageLeverancier manageLeverancier = new ManageLeverancier();
+                manageLeverancier.TopLevel = false;
+                pnlDisplay.Controls.Clear();
+                pnlDisplay.Controls.Add(manageLeverancier);
+                manageLeverancier.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

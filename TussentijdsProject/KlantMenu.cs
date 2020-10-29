@@ -19,20 +19,34 @@ namespace TussentijdsProject
 
         private void klantToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ManageKlant manageKlant = new ManageKlant();
-            manageKlant.TopLevel = false;
-            pnlDisplay.Controls.Clear();
-            pnlDisplay.Controls.Add(manageKlant);
-            manageKlant.Show();
+            try
+            {
+                ManageKlant manageKlant = new ManageKlant();
+                manageKlant.TopLevel = false;
+                pnlDisplay.Controls.Clear();
+                pnlDisplay.Controls.Add(manageKlant);
+                manageKlant.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void klantToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            BestellingKlant bestellingKlant = new BestellingKlant();
-            bestellingKlant.TopLevel = false;
-            pnlDisplay.Controls.Clear();
-            pnlDisplay.Controls.Add(bestellingKlant);
-            bestellingKlant.Show();
+            try
+            {
+                BestellingKlant bestellingKlant = new BestellingKlant();
+                bestellingKlant.TopLevel = false;
+                pnlDisplay.Controls.Clear();
+                pnlDisplay.Controls.Add(bestellingKlant);
+                bestellingKlant.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -23,7 +23,14 @@ namespace TussentijdsProject
 
         private void ManageProduct_Load(object sender, EventArgs e)
         {
-            DisplayProduct();            
+            try
+            {
+                DisplayProduct();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void DisplayProduct()
@@ -56,82 +63,110 @@ namespace TussentijdsProject
 
         private void btnToevoegen_Click(object sender, EventArgs e)
         {
-            IsNewProduct = true;
-            SaveProduct saveProduct = new SaveProduct();
-            if (saveProduct.ShowDialog() == DialogResult.OK)
+            try
             {
-                DisplayProduct();
-            }
-        }
-
-        private void btnBewerken_Click(object sender, EventArgs e)
-        {
-            if (cbProduct.SelectedIndex >= 0)
-            {
-                IsNewProduct = false;
-                ProductId = (int)cbProduct.SelectedValue;
+                IsNewProduct = true;
                 SaveProduct saveProduct = new SaveProduct();
                 if (saveProduct.ShowDialog() == DialogResult.OK)
                 {
                     DisplayProduct();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een product om te bewerken");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBewerken_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbProduct.SelectedIndex >= 0)
+                {
+                    IsNewProduct = false;
+                    ProductId = (int)cbProduct.SelectedValue;
+                    SaveProduct saveProduct = new SaveProduct();
+                    if (saveProduct.ShowDialog() == DialogResult.OK)
+                    {
+                        DisplayProduct();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een product om te bewerken");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
-            if (cbProduct.SelectedIndex >= 0)
+            try
             {
-                string product = cbProduct.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbProduct.SelectedIndex >= 0)
                 {
-                    ctx.Products.RemoveRange(ctx.Products.Where(x => x.ProductID == (int)cbProduct.SelectedValue));
-                    ctx.SaveChanges();
+                    string product = cbProduct.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Products.RemoveRange(ctx.Products.Where(x => x.ProductID == (int)cbProduct.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(product + " is succesvol verwijderd");
+                    DisplayProduct();
                 }
-                MessageBox.Show(product + " is succesvol verwijderd");
-                DisplayProduct();
+                else
+                {
+                    MessageBox.Show("Selecteer een product om te verwijderen");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een product om te verwijderen");
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void cbProduct_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbProduct.SelectedIndex >= 0)
+            try
             {
-                int productId = Convert.ToInt32(cbProduct.SelectedValue);
+                if (cbProduct.SelectedIndex >= 0)
+                {
+                    int productId = Convert.ToInt32(cbProduct.SelectedValue);
 
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                {                    
-                    var selectedProduct = ctx.Products
-                                                .Join(ctx.Leveranciers,
-                                                p => p.LeverancierID,
-                                                l => l.LeverancierID,
-                                                (p, l) => new { p, l })
-
-                                                .Join(ctx.Categories,
-                                                p1 => p1.p.CategorieID,
-                                                c => c.CategorieID,
-                                                (p1, c) => new {p1, c}).Where(x => x.p1.p.ProductID == productId).FirstOrDefault();
-
-                    if (selectedProduct != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtNaam.Text = selectedProduct.p1.p.Naam;
-                        txtInkoopprijs.Text = selectedProduct.p1.p.Inkoopprijs.ToString();
-                        txtMarge.Text = selectedProduct.p1.p.Marge.ToString();
-                        txtAantal.Text = selectedProduct.p1.p.Aantal.ToString();
-                        txtEenheid.Text = selectedProduct.p1.p.Eenheid;
-                        txtBtw.Text = selectedProduct.p1.p.BTW.ToString();
-                        txtLeverancier.Text = selectedProduct.p1.l.Contactpersoon;
-                        txtCategorie.Text = selectedProduct.c.CategorieNaam;
+                        var selectedProduct = ctx.Products
+                                                    .Join(ctx.Leveranciers,
+                                                    p => p.LeverancierID,
+                                                    l => l.LeverancierID,
+                                                    (p, l) => new { p, l })
+
+                                                    .Join(ctx.Categories,
+                                                    p1 => p1.p.CategorieID,
+                                                    c => c.CategorieID,
+                                                    (p1, c) => new { p1, c }).Where(x => x.p1.p.ProductID == productId).FirstOrDefault();
+
+                        if (selectedProduct != null)
+                        {
+                            txtNaam.Text = selectedProduct.p1.p.Naam;
+                            txtInkoopprijs.Text = selectedProduct.p1.p.Inkoopprijs.ToString();
+                            txtMarge.Text = selectedProduct.p1.p.Marge.ToString();
+                            txtAantal.Text = selectedProduct.p1.p.Aantal.ToString();
+                            txtEenheid.Text = selectedProduct.p1.p.Eenheid;
+                            txtBtw.Text = selectedProduct.p1.p.BTW.ToString();
+                            txtLeverancier.Text = selectedProduct.p1.l.Contactpersoon;
+                            txtCategorie.Text = selectedProduct.c.CategorieNaam;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

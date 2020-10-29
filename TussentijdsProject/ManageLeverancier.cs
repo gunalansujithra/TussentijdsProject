@@ -22,55 +22,83 @@ namespace TussentijdsProject
         public static int LeverancierId = 0;
 
         private void btnToevoegen_Click(object sender, EventArgs e)
-        {            
-            IsNewLeverancier = true;
-            SaveLeverancier saveLeverancier = new SaveLeverancier();
-            if (saveLeverancier.ShowDialog() == DialogResult.OK)
-            {
-                DisplayLeverancies();
-            }            
-        }
-
-        private void btnBewerken_Click(object sender, EventArgs e)
         {
-            if (cbLeverancier.SelectedIndex >= 0)
+            try
             {
-                IsNewLeverancier = false;
-                LeverancierId = (int)cbLeverancier.SelectedValue;
+                IsNewLeverancier = true;
                 SaveLeverancier saveLeverancier = new SaveLeverancier();
                 if (saveLeverancier.ShowDialog() == DialogResult.OK)
                 {
                     DisplayLeverancies();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een leverancier om te bewerken");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnBewerken_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbLeverancier.SelectedIndex >= 0)
+                {
+                    IsNewLeverancier = false;
+                    LeverancierId = (int)cbLeverancier.SelectedValue;
+                    SaveLeverancier saveLeverancier = new SaveLeverancier();
+                    if (saveLeverancier.ShowDialog() == DialogResult.OK)
+                    {
+                        DisplayLeverancies();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een leverancier om te bewerken");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void btnVerwijderen_Click(object sender, EventArgs e)
         {
-            if (cbLeverancier.SelectedIndex >= 0)
+            try
             {
-                string levarancier = cbLeverancier.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbLeverancier.SelectedIndex >= 0)
                 {
-                    ctx.Leveranciers.RemoveRange(ctx.Leveranciers.Where(x => x.LeverancierID == (int)cbLeverancier.SelectedValue));
-                    ctx.SaveChanges();
+                    string levarancier = cbLeverancier.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.Leveranciers.RemoveRange(ctx.Leveranciers.Where(x => x.LeverancierID == (int)cbLeverancier.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(levarancier + " is succesvol verwijderd");
+                    DisplayLeverancies();
                 }
-                MessageBox.Show(levarancier + " is succesvol verwijderd");
-                DisplayLeverancies();
+                else
+                {
+                    MessageBox.Show("Selecteer een leverancier om te verwijderen");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een leverancier om te verwijderen");
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ManageLeverancier_Load(object sender, EventArgs e)
         {
-            DisplayLeverancies();
+            try
+            {
+                DisplayLeverancies();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void DisplayLeverancies()
@@ -103,26 +131,33 @@ namespace TussentijdsProject
 
         private void cbLeverancier_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbLeverancier.SelectedIndex >= 0)
+            try
             {
-                int leverancierId = Convert.ToInt32(cbLeverancier.SelectedValue);
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbLeverancier.SelectedIndex >= 0)
                 {
-                    var selectedLeverancier = ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault();
+                    int leverancierId = Convert.ToInt32(cbLeverancier.SelectedValue);
 
-                    if (selectedLeverancier != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtPersoon.Text = selectedLeverancier.Contactpersoon;
-                        txtTelefoon.Text = selectedLeverancier.Telefoonnummer;
-                        txtEmailadres.Text = selectedLeverancier.Emailadres;
-                        txtStraatnaam.Text = selectedLeverancier.Straatnaam;
-                        txtHuisNummer.Text = selectedLeverancier.Huisnummer;
-                        txtBus.Text = selectedLeverancier.Bus;
-                        txtPostcode.Text = selectedLeverancier.Postcode.ToString();
-                        txtGemeente.Text = selectedLeverancier.Gemeente;                        
+                        var selectedLeverancier = ctx.Leveranciers.Where(x => x.LeverancierID == leverancierId).FirstOrDefault();
+
+                        if (selectedLeverancier != null)
+                        {
+                            txtPersoon.Text = selectedLeverancier.Contactpersoon;
+                            txtTelefoon.Text = selectedLeverancier.Telefoonnummer;
+                            txtEmailadres.Text = selectedLeverancier.Emailadres;
+                            txtStraatnaam.Text = selectedLeverancier.Straatnaam;
+                            txtHuisNummer.Text = selectedLeverancier.Huisnummer;
+                            txtBus.Text = selectedLeverancier.Bus;
+                            txtPostcode.Text = selectedLeverancier.Postcode.ToString();
+                            txtGemeente.Text = selectedLeverancier.Gemeente;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

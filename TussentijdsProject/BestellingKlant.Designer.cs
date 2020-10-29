@@ -51,7 +51,6 @@
             this.btnVerwijderen = new System.Windows.Forms.Button();
             this.btnWissen = new System.Windows.Forms.Button();
             this.btnAfrekenen = new System.Windows.Forms.Button();
-            this.btnOpslaan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.epProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epPersoneelLids)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.epKlant)).BeginInit();
@@ -89,7 +88,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 405);
+            this.label3.Location = new System.Drawing.Point(55, 405);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(143, 23);
@@ -268,28 +267,12 @@
             this.btnAfrekenen.UseVisualStyleBackColor = false;
             this.btnAfrekenen.Click += new System.EventHandler(this.btnAfrekenen_Click);
             // 
-            // btnOpslaan
-            // 
-            this.btnOpslaan.BackColor = System.Drawing.Color.White;
-            this.btnOpslaan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOpslaan.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOpslaan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.btnOpslaan.Location = new System.Drawing.Point(800, 595);
-            this.btnOpslaan.Margin = new System.Windows.Forms.Padding(4);
-            this.btnOpslaan.Name = "btnOpslaan";
-            this.btnOpslaan.Size = new System.Drawing.Size(200, 66);
-            this.btnOpslaan.TabIndex = 96;
-            this.btnOpslaan.Text = "Opslaan in een word document";
-            this.btnOpslaan.UseVisualStyleBackColor = false;
-            this.btnOpslaan.Click += new System.EventHandler(this.btnOpslaan_Click);
-            // 
             // BestellingKlant
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1062, 785);
-            this.Controls.Add(this.btnOpslaan);
             this.Controls.Add(this.btnAfrekenen);
             this.Controls.Add(this.btnWissen);
             this.Controls.Add(this.btnVerwijderen);
@@ -348,6 +331,5 @@
         private System.Windows.Forms.Button btnVerwijderen;
         private System.Windows.Forms.Button btnWissen;
         private System.Windows.Forms.Button btnAfrekenen;
-        private System.Windows.Forms.Button btnOpslaan;
     }
 }

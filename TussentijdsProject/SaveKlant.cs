@@ -128,75 +128,10 @@ namespace TussentijdsProject
 
         private void SaveKlant_Load(object sender, EventArgs e)
         {
-            if (ManageKlant.IsNewKlant)
+            try
             {
-                txtVoornaam.Clear();
-                txtAchternaam.Clear();
-                this.txtStraatnaam.Clear();
-                txtHuisNummer.Clear();
-                txtBus.Clear();
-                txtPostcode.Clear();
-                txtGemeente.Clear();
-                mtbTelefoonnummer.Clear();
-                txtEmailadres.Clear();
-                txtOpmerking.Clear();
-            }
-            else
-            {
-                int klantId = ManageKlant.KlantId;
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (ManageKlant.IsNewKlant)
                 {
-                    var selectedklant = ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault();
-
-                    if (selectedklant != null)
-                    {
-                        txtVoornaam.Text = selectedklant.Voornaam;
-                        txtAchternaam.Text = selectedklant.Achternaam;
-                        this.txtStraatnaam.Text = selectedklant.Straatnaam;
-                        txtHuisNummer.Text = selectedklant.Huisnummer;
-                        txtBus.Text = selectedklant.Bus;
-                        txtPostcode.Text = selectedklant.Postcode.ToString();
-                        txtGemeente.Text = selectedklant.Gemeente;
-                        mtbTelefoonnummer.Text = selectedklant.Telefoonnummer;
-                        txtEmailadres.Text = selectedklant.Emailadres;
-                        txtOpmerking.Text = selectedklant.Opmerking;
-                    }
-                }
-            }
-        }
-
-        private void btnOpslaan_Click(object sender, EventArgs e)
-        {
-            if (ManageKlant.IsNewKlant)
-            {
-                DisplayErrorMessage();
-
-                if (txtVoornaam.Text.Trim().Length > 0 && txtAchternaam.Text.Trim().Length > 0 && this.txtStraatnaam.Text.Trim().Length > 0
-                        && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0 && txtPostcode.Text.Trim().Length > 0
-                        && txtGemeente.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
-                        && txtOpmerking.Text.Trim().Length > 0)
-                {
-                    string klant = txtVoornaam.Text + " " + txtAchternaam.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Klants.Add(new Klant()
-                        {
-                            Voornaam = txtVoornaam.Text.Trim(),
-                            Achternaam = txtAchternaam.Text.Trim(),
-                            Straatnaam = this.txtStraatnaam.Text.Trim(),
-                            Huisnummer = txtHuisNummer.Text.Trim(),
-                            Bus = txtBus.Text.Trim(),
-                            Postcode = Convert.ToInt32(txtPostcode.Text.Trim()),
-                            Gemeente = txtGemeente.Text.Trim(),
-                            Telefoonnummer = mtbTelefoonnummer.Text.Trim(),
-                            Emailadres = txtEmailadres.Text.Trim(),
-                            AangemaaktOp = DateTime.Now,
-                            Opmerking = txtOpmerking.Text.Trim()
-                        });
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(klant + " is succesvol toegevoegd");
                     txtVoornaam.Clear();
                     txtAchternaam.Clear();
                     this.txtStraatnaam.Clear();
@@ -207,38 +142,117 @@ namespace TussentijdsProject
                     mtbTelefoonnummer.Clear();
                     txtEmailadres.Clear();
                     txtOpmerking.Clear();
-                    this.DialogResult = DialogResult.OK;
                 }
-            }
-            else
-            {
-                DisplayErrorMessage();
-
-                int klantId = ManageKlant.KlantId;
-
-                if (txtVoornaam.Text.Trim().Length > 0 && txtAchternaam.Text.Trim().Length > 0 && this.txtStraatnaam.Text.Trim().Length > 0
-                        && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0 && txtPostcode.Text.Trim().Length > 0
-                        && txtGemeente.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
-                        && txtOpmerking.Text.Trim().Length > 0)
+                else
                 {
-                    string klant = txtVoornaam.Text + " " + txtAchternaam.Text;
+                    int klantId = ManageKlant.KlantId;
+
                     using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Voornaam = txtVoornaam.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Achternaam = txtAchternaam.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Straatnaam = this.txtStraatnaam.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Huisnummer = txtHuisNummer.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Bus = txtBus.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Postcode = Convert.ToInt32(txtPostcode.Text.Trim());
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Gemeente = txtGemeente.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Telefoonnummer = mtbTelefoonnummer.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Emailadres = txtEmailadres.Text.Trim();
-                        ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Opmerking = txtOpmerking.Text.Trim();
-                        ctx.SaveChanges();
+                        var selectedklant = ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault();
+
+                        if (selectedklant != null)
+                        {
+                            txtVoornaam.Text = selectedklant.Voornaam;
+                            txtAchternaam.Text = selectedklant.Achternaam;
+                            this.txtStraatnaam.Text = selectedklant.Straatnaam;
+                            txtHuisNummer.Text = selectedklant.Huisnummer;
+                            txtBus.Text = selectedklant.Bus;
+                            txtPostcode.Text = selectedklant.Postcode.ToString();
+                            txtGemeente.Text = selectedklant.Gemeente;
+                            mtbTelefoonnummer.Text = selectedklant.Telefoonnummer;
+                            txtEmailadres.Text = selectedklant.Emailadres;
+                            txtOpmerking.Text = selectedklant.Opmerking;
+                        }
                     }
-                    MessageBox.Show(klant + " is succesvol bijgewerkt");
-                    this.DialogResult = DialogResult.OK;
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnOpslaan_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ManageKlant.IsNewKlant)
+                {
+                    DisplayErrorMessage();
+
+                    if (txtVoornaam.Text.Trim().Length > 0 && txtAchternaam.Text.Trim().Length > 0 && this.txtStraatnaam.Text.Trim().Length > 0
+                            && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0 && txtPostcode.Text.Trim().Length > 0
+                            && txtGemeente.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
+                            && txtOpmerking.Text.Trim().Length > 0)
+                    {
+                        string klant = txtVoornaam.Text + " " + txtAchternaam.Text;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            ctx.Klants.Add(new Klant()
+                            {
+                                Voornaam = txtVoornaam.Text.Trim(),
+                                Achternaam = txtAchternaam.Text.Trim(),
+                                Straatnaam = this.txtStraatnaam.Text.Trim(),
+                                Huisnummer = txtHuisNummer.Text.Trim(),
+                                Bus = txtBus.Text.Trim(),
+                                Postcode = Convert.ToInt32(txtPostcode.Text.Trim()),
+                                Gemeente = txtGemeente.Text.Trim(),
+                                Telefoonnummer = mtbTelefoonnummer.Text.Trim(),
+                                Emailadres = txtEmailadres.Text.Trim(),
+                                AangemaaktOp = DateTime.Now,
+                                Opmerking = txtOpmerking.Text.Trim()
+                            });
+                            ctx.SaveChanges();
+                        }
+                        MessageBox.Show(klant + " is succesvol toegevoegd");
+                        txtVoornaam.Clear();
+                        txtAchternaam.Clear();
+                        this.txtStraatnaam.Clear();
+                        txtHuisNummer.Clear();
+                        txtBus.Clear();
+                        txtPostcode.Clear();
+                        txtGemeente.Clear();
+                        mtbTelefoonnummer.Clear();
+                        txtEmailadres.Clear();
+                        txtOpmerking.Clear();
+                        this.DialogResult = DialogResult.OK;
+                    }
+                }
+                else
+                {
+                    DisplayErrorMessage();
+
+                    int klantId = ManageKlant.KlantId;
+
+                    if (txtVoornaam.Text.Trim().Length > 0 && txtAchternaam.Text.Trim().Length > 0 && this.txtStraatnaam.Text.Trim().Length > 0
+                            && txtHuisNummer.Text.Trim().Length > 0 && txtBus.Text.Trim().Length > 0 && txtPostcode.Text.Trim().Length > 0
+                            && txtGemeente.Text.Trim().Length > 0 && mtbTelefoonnummer.Text.Trim().Length == 17 && txtEmailadres.Text.Trim().Length > 0
+                            && txtOpmerking.Text.Trim().Length > 0)
+                    {
+                        string klant = txtVoornaam.Text + " " + txtAchternaam.Text;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Voornaam = txtVoornaam.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Achternaam = txtAchternaam.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Straatnaam = this.txtStraatnaam.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Huisnummer = txtHuisNummer.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Bus = txtBus.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Postcode = Convert.ToInt32(txtPostcode.Text.Trim());
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Gemeente = txtGemeente.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Telefoonnummer = mtbTelefoonnummer.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Emailadres = txtEmailadres.Text.Trim();
+                            ctx.Klants.Where(x => x.KlantID == klantId).FirstOrDefault().Opmerking = txtOpmerking.Text.Trim();
+                            ctx.SaveChanges();
+                        }
+                        MessageBox.Show(klant + " is succesvol bijgewerkt");
+                        this.DialogResult = DialogResult.OK;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

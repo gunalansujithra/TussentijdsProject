@@ -19,20 +19,41 @@ namespace TussentijdsProject
 
         private void ManageStocks_Load(object sender, EventArgs e)
         {
-            DisplayRange();
+            try
+            {
+                DisplayRange();
             DisplayCategorieNaam();
             cbCategorie.SelectedIndex = -1;
             DisplayProduct();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cbCategorie_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FilterProductResults();
+                try
+                {
+                    FilterProductResults();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void cbKlant_SelectedIndexChanged(object sender, EventArgs e)
         {
-            FilterProductResults();
+                    try
+                    {
+                        FilterProductResults();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         public void DisplayCategorieNaam()

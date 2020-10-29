@@ -23,49 +23,70 @@ namespace TussentijdsProject
 
         private void btnBewerken_Click(object sender, EventArgs e)
         {
-            if (cbUsername.SelectedIndex >= 0)
+            try
             {
-                IsNewUser = false;
-                UserId = (int)cbUsername.SelectedValue;
-                InloggenScreen.IsWachtwoordVergeten = false;
+                if (cbUsername.SelectedIndex >= 0)
+                {
+                    IsNewUser = false;
+                    UserId = (int)cbUsername.SelectedValue;
+                    InloggenScreen.IsWachtwoordVergeten = false;
+                    SaveInloggen saveInloggen = new SaveInloggen();
+                    if (saveInloggen.ShowDialog() == DialogResult.OK)
+                    {
+                        DisplayUserNaam();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een username om te bewerken");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnVerwijderen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbUsername.SelectedIndex >= 0)
+                {
+                    string username = cbUsername.Text;
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    {
+                        ctx.InLoggens.RemoveRange(ctx.InLoggens.Where(x => x.InloggenId == (int)cbUsername.SelectedValue));
+                        ctx.SaveChanges();
+                    }
+                    MessageBox.Show(username + " is succesvol verwijderd");
+                    DisplayUserNaam();
+                }
+                else
+                {
+                    MessageBox.Show("Selecteer een categorie om te verwijderen");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnToevoegen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                IsNewUser = true;
                 SaveInloggen saveInloggen = new SaveInloggen();
                 if (saveInloggen.ShowDialog() == DialogResult.OK)
                 {
                     DisplayUserNaam();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Selecteer een username om te bewerken");
-            }
-        }
-
-        private void btnVerwijderen_Click(object sender, EventArgs e)
-        {
-            if (cbUsername.SelectedIndex >= 0)
-            {
-                string username = cbUsername.Text;
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                {
-                    ctx.InLoggens.RemoveRange(ctx.InLoggens.Where(x => x.InloggenId == (int)cbUsername.SelectedValue));
-                    ctx.SaveChanges();
-                }
-                MessageBox.Show(username + " is succesvol verwijderd");
-                DisplayUserNaam();
-            }
-            else
-            {
-                MessageBox.Show("Selecteer een categorie om te verwijderen");
-            }
-        }
-
-        private void btnToevoegen_Click(object sender, EventArgs e)
-        {
-            IsNewUser = true;
-            SaveInloggen saveInloggen = new SaveInloggen();
-            if (saveInloggen.ShowDialog() == DialogResult.OK)
-            {
-                DisplayUserNaam();
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -110,28 +131,42 @@ namespace TussentijdsProject
 
         private void cbUsername_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbUsername.SelectedIndex >= 0)
+            try
             {
-                int userId = Convert.ToInt32(cbUsername.SelectedValue);
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (cbUsername.SelectedIndex >= 0)
                 {
-                    var selectedUser = ctx.InLoggens.Where(x => x.InloggenId == userId).FirstOrDefault();
+                    int userId = Convert.ToInt32(cbUsername.SelectedValue);
 
-                    if (selectedUser != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtUsername.Text = selectedUser.Username;
-                        //txtPassword.Text = DecryptWachtwoord(selectedUser.Wachtwoord);
-                        cbGebruiker.SelectedValue = selectedUser.GebruikerId;
+                        var selectedUser = ctx.InLoggens.Where(x => x.InloggenId == userId).FirstOrDefault();
+
+                        if (selectedUser != null)
+                        {
+                            txtUsername.Text = selectedUser.Username;
+                            //txtPassword.Text = DecryptWachtwoord(selectedUser.Wachtwoord);
+                            cbGebruiker.SelectedValue = selectedUser.GebruikerId;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void ManageInloggen_Load(object sender, EventArgs e)
         {
-            DisplayGebruiker();
-            DisplayUserNaam();            
+            try
+            {
+                DisplayGebruiker();
+                DisplayUserNaam();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         //public static string DecryptWachtwoord(string pass)

@@ -19,39 +19,46 @@ namespace TussentijdsProject
 
         private void btnOpslaan_Click(object sender, EventArgs e)
         {
-            if (ManagePersoneelslid.IsNewPersoneelsLid)
+            try
             {
-                DisplayErrorMessage();
-
-                if (txtName.Text.Trim().Length > 0)
+                if (ManagePersoneelslid.IsNewPersoneelsLid)
                 {
-                    string personeelslid = txtName.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                    DisplayErrorMessage();
+
+                    if (txtName.Text.Trim().Length > 0)
                     {
-                        ctx.Personeelslids.Add(new Personeelslid() { Voornaam = txtName.Text });
-                        ctx.SaveChanges();
+                        string personeelslid = txtName.Text;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            ctx.Personeelslids.Add(new Personeelslid() { Voornaam = txtName.Text });
+                            ctx.SaveChanges();
+                        }
+                        MessageBox.Show(personeelslid + " is succesvol toegevoegd");
+                        txtName.Clear();
+                        this.DialogResult = DialogResult.OK;
                     }
-                    MessageBox.Show(personeelslid + " is succesvol toegevoegd");
-                    txtName.Clear();
-                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    DisplayErrorMessage();
+
+                    if (txtName.Text.Trim().Length > 0)
+                    {
+                        string personeelslid = txtName.Text;
+                        using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                        {
+                            ctx.Personeelslids.Where(x => x.PersoneelslidID == ManagePersoneelslid.PersoneelsLidId).FirstOrDefault().Voornaam = txtName.Text.Trim();
+                            ctx.SaveChanges();
+                        }
+                        MessageBox.Show(personeelslid + " is succesvol bijgewerkt");
+
+                        this.DialogResult = DialogResult.OK;
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                DisplayErrorMessage();
-
-                if (txtName.Text.Trim().Length > 0)
-                {
-                    string personeelslid = txtName.Text;
-                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
-                    {
-                        ctx.Personeelslids.Where(x => x.PersoneelslidID == ManagePersoneelslid.PersoneelsLidId).FirstOrDefault().Voornaam = txtName.Text.Trim();
-                        ctx.SaveChanges();
-                    }
-                    MessageBox.Show(personeelslid + " is succesvol bijgewerkt");
-
-                    this.DialogResult = DialogResult.OK;
-                }
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -81,23 +88,30 @@ namespace TussentijdsProject
 
         private void SavePersoneelsLid_Load(object sender, EventArgs e)
         {
-            if (ManagePersoneelslid.IsNewPersoneelsLid)
+            try
             {
-                txtName.Clear();
-            }
-            else
-            {
-                int personeelsLid = ManagePersoneelslid.PersoneelsLidId;
-
-                using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
+                if (ManagePersoneelslid.IsNewPersoneelsLid)
                 {
-                    var selectedPersoneelsLid = ctx.Personeelslids.Where(x => x.PersoneelslidID == personeelsLid).FirstOrDefault();
+                    txtName.Clear();
+                }
+                else
+                {
+                    int personeelsLid = ManagePersoneelslid.PersoneelsLidId;
 
-                    if (selectedPersoneelsLid != null)
+                    using (BestellingenDatabaseEntities ctx = new BestellingenDatabaseEntities())
                     {
-                        txtName.Text = selectedPersoneelsLid.Voornaam;
+                        var selectedPersoneelsLid = ctx.Personeelslids.Where(x => x.PersoneelslidID == personeelsLid).FirstOrDefault();
+
+                        if (selectedPersoneelsLid != null)
+                        {
+                            txtName.Text = selectedPersoneelsLid.Voornaam;
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

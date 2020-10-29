@@ -31,7 +31,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.asfdcasdfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klantToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.overzichtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bestellingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.klantToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.pnlDisplay = new System.Windows.Forms.Panel();
@@ -44,7 +43,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.asfdcasdfToolStripMenuItem,
-            this.overzichtToolStripMenuItem,
             this.bestellingToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -66,12 +64,6 @@
             this.klantToolStripMenuItem.Size = new System.Drawing.Size(171, 38);
             this.klantToolStripMenuItem.Text = "Klant";
             this.klantToolStripMenuItem.Click += new System.EventHandler(this.klantToolStripMenuItem_Click);
-            // 
-            // overzichtToolStripMenuItem
-            // 
-            this.overzichtToolStripMenuItem.Name = "overzichtToolStripMenuItem";
-            this.overzichtToolStripMenuItem.Size = new System.Drawing.Size(159, 38);
-            this.overzichtToolStripMenuItem.Text = "Overzicht";
             // 
             // bestellingToolStripMenuItem
             // 
@@ -121,7 +113,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem asfdcasdfToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klantToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem overzichtToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bestellingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem klantToolStripMenuItem1;
         private System.Windows.Forms.Panel pnlDisplay;
